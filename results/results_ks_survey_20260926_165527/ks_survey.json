@@ -1,0 +1,25 @@
+{
+ "dpr-jina-768-normalized": {
+  "n_corpus": 20969760,
+  "dim": 768,
+  "n_test": 1000,
+  "stats_rows": 325520,
+  "attrs": {
+   "dimension": 768,
+   "distance": "normalized",
+   "point_type": "float"
+  },
+  "ks": 0.05849214966609253,
+  "ks_ci95": 0.0021673363284107146,
+  "ks_median": 0.05733974836714137,
+  "ks_std": 0.015599000695932848,
+  "n_ks_queries": 200,
+  "top1_var": 0.023202527005975568,
+  "pr_frac": 0.25629148140008756,
+  "ks_self": 0.05554134501848024,
+  "predicted": "band",
+  "seconds": 237.8,
+  "split": "ID",
+  "model": "text, Jina"
+ }
+}

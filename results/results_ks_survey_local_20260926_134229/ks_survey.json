@@ -1,0 +1,86 @@
+{
+ "glove100": {
+  "n_corpus": 1183514,
+  "dim": 100,
+  "n_test": 10000,
+  "stats_rows": 1000000,
+  "attrs": {
+   "distance": "angular"
+  },
+  "ks": 0.018243683654574537,
+  "ks_median": 0.01531789633250119,
+  "ks_std": 0.008893077209373356,
+  "top1_var": 0.02824924907387284,
+  "pr_frac": 0.8811024494141527,
+  "ks_self": 0.017901085608639487,
+  "predicted": "Ada-ef",
+  "seconds": 37.8,
+  "split": "ours",
+  "model": "",
+  "unified_ks": 0.016
+ },
+ "dbpedia1536": {
+  "n_corpus": 990000,
+  "dim": 1536,
+  "n_test": 10000,
+  "stats_rows": 162760,
+  "attrs": {
+   "dimension": 1536,
+   "distance": "angular",
+   "point_type": "float",
+   "type": "dense"
+  },
+  "ks": 0.036139571588064606,
+  "ks_median": 0.03598430978768841,
+  "ks_std": 0.01273804343572755,
+  "top1_var": 0.03556326131327189,
+  "pr_frac": 0.11469726298738293,
+  "ks_self": 0.039138573089973934,
+  "predicted": "Ada-ef",
+  "seconds": 171.0,
+  "split": "ours",
+  "model": "",
+  "unified_ks": 0.036
+ },
+ "deepimage96": {
+  "n_corpus": 9990000,
+  "dim": 96,
+  "n_test": 10000,
+  "stats_rows": 1000000,
+  "attrs": {
+   "distance": "angular",
+   "point_type": "float"
+  },
+  "ks": 0.06358917821196176,
+  "ks_median": 0.060029519436674894,
+  "ks_std": 0.02794217967722329,
+  "top1_var": 0.07302843363973045,
+  "pr_frac": 0.4714000722559426,
+  "ks_self": 0.07389367888935314,
+  "predicted": "band",
+  "seconds": 31.0,
+  "split": "ours",
+  "model": "",
+  "unified_ks": 0.072
+ },
+ "sift128": {
+  "n_corpus": 1000000,
+  "dim": 128,
+  "n_test": 10000,
+  "stats_rows": 1000000,
+  "attrs": {
+   "distance": "euclidean"
+  },
+  "ks": 0.12070021894724017,
+  "ks_median": 0.12727961223143217,
+  "ks_std": 0.036287424101013994,
+  "top1_var": 0.3239243612639964,
+  "pr_frac": 0.06464580388391163,
+  "ks_self": 0.10656271993294403,
+  "predicted": "ours",
+  "seconds": 31.9,
+  "split": "ours",
+  "model": "",
+  "unified_ks": 0.114
+ }
+}
