@@ -1,0 +1,228 @@
+{
+ "darth": {
+  "name": "DARTH",
+  "mean_r": 0.9736330000000002,
+  "p1": 0.87,
+  "p5": 0.91,
+  "pct_target": 85.8,
+  "total_dc": 31415.8343,
+  "mean_lat_us": 14484.0436457,
+  "scorecard": {
+   "saving_dc_pct": 6.696418906065128,
+   "saving_lat_pct": -41.867323171589796,
+   "p1_gain": 0.04447449832208661,
+   "p5_gain": 0.01585587374156494
+  }
+ },
+ "faiss_fixed": [
+  {
+   "name": "FAISS fixed(ef=100)",
+   "mean_r": 0.715794,
+   "p1": 0.23,
+   "p5": 0.37,
+   "pct_target": 12.7,
+   "total_dc": 2761.7006,
+   "mean_lat_us": 592.1884844000001,
+   "avg_ef": 100
+  },
+  {
+   "name": "FAISS fixed(ef=125)",
+   "mean_r": 0.7512420000000001,
+   "p1": 0.27,
+   "p5": 0.42,
+   "pct_target": 16.509999999999998,
+   "total_dc": 3350.9625,
+   "mean_lat_us": 698.7571255999999,
+   "avg_ef": 125
+  },
+  {
+   "name": "FAISS fixed(ef=150)",
+   "mean_r": 0.7781170000000001,
+   "p1": 0.32,
+   "p5": 0.46,
+   "pct_target": 20.32,
+   "total_dc": 3934.5215,
+   "mean_lat_us": 738.6293435,
+   "avg_ef": 150
+  },
+  {
+   "name": "FAISS fixed(ef=175)",
+   "mean_r": 0.799557,
+   "p1": 0.36,
+   "p5": 0.5,
+   "pct_target": 23.49,
+   "total_dc": 4518.5283,
+   "mean_lat_us": 851.2573736000002,
+   "avg_ef": 175
+  },
+  {
+   "name": "FAISS fixed(ef=200)",
+   "mean_r": 0.817425,
+   "p1": 0.4,
+   "p5": 0.53,
+   "pct_target": 26.56,
+   "total_dc": 5098.0394,
+   "mean_lat_us": 960.9795125,
+   "avg_ef": 200
+  },
+  {
+   "name": "FAISS fixed(ef=250)",
+   "mean_r": 0.844109,
+   "p1": 0.45,
+   "p5": 0.58,
+   "pct_target": 31.46,
+   "total_dc": 6244.7357,
+   "mean_lat_us": 1195.4431736000001,
+   "avg_ef": 250
+  },
+  {
+   "name": "FAISS fixed(ef=300)",
+   "mean_r": 0.8646520000000001,
+   "p1": 0.5,
+   "p5": 0.61,
+   "pct_target": 35.709999999999994,
+   "total_dc": 7385.6789,
+   "mean_lat_us": 1436.2019074,
+   "avg_ef": 300
+  },
+  {
+   "name": "FAISS fixed(ef=350)",
+   "mean_r": 0.8804330000000001,
+   "p1": 0.53,
+   "p5": 0.65,
+   "pct_target": 39.410000000000004,
+   "total_dc": 8515.0985,
+   "mean_lat_us": 1809.2975362,
+   "avg_ef": 350
+  },
+  {
+   "name": "FAISS fixed(ef=400)",
+   "mean_r": 0.892725,
+   "p1": 0.56,
+   "p5": 0.67,
+   "pct_target": 42.86,
+   "total_dc": 9633.31,
+   "mean_lat_us": 1945.7944644000002,
+   "avg_ef": 400
+  },
+  {
+   "name": "FAISS fixed(ef=500)",
+   "mean_r": 0.9118,
+   "p1": 0.61,
+   "p5": 0.72,
+   "pct_target": 49.21,
+   "total_dc": 11842.8638,
+   "mean_lat_us": 2481.5533880000003,
+   "avg_ef": 500
+  },
+  {
+   "name": "FAISS fixed(ef=600)",
+   "mean_r": 0.9251209999999999,
+   "p1": 0.6499000000000001,
+   "p5": 0.75,
+   "pct_target": 54.64,
+   "total_dc": 14017.1542,
+   "mean_lat_us": 3059.2824919,
+   "avg_ef": 600
+  },
+  {
+   "name": "FAISS fixed(ef=700)",
+   "mean_r": 0.935674,
+   "p1": 0.68,
+   "p5": 0.78,
+   "pct_target": 59.36,
+   "total_dc": 16162.8404,
+   "mean_lat_us": 3647.8599281,
+   "avg_ef": 700
+  },
+  {
+   "name": "FAISS fixed(ef=800)",
+   "mean_r": 0.943843,
+   "p1": 0.71,
+   "p5": 0.8,
+   "pct_target": 63.51,
+   "total_dc": 18280.4079,
+   "mean_lat_us": 4322.4610324000005,
+   "avg_ef": 800
+  },
+  {
+   "name": "FAISS fixed(ef=1000)",
+   "mean_r": 0.955716,
+   "p1": 0.75,
+   "p5": 0.84,
+   "pct_target": 70.35,
+   "total_dc": 22440.8206,
+   "mean_lat_us": 5651.1630074,
+   "avg_ef": 1000
+  },
+  {
+   "name": "FAISS fixed(ef=1250)",
+   "mean_r": 0.9654739999999999,
+   "p1": 0.79,
+   "p5": 0.87,
+   "pct_target": 77.2,
+   "total_dc": 27519.0656,
+   "mean_lat_us": 7627.9972566,
+   "avg_ef": 1250
+  },
+  {
+   "name": "FAISS fixed(ef=1500)",
+   "mean_r": 0.972268,
+   "p1": 0.82,
+   "p5": 0.89,
+   "pct_target": 82.36,
+   "total_dc": 32483.9802,
+   "mean_lat_us": 9639.022638,
+   "avg_ef": 1500
+  },
+  {
+   "name": "FAISS fixed(ef=2000)",
+   "mean_r": 0.9807560000000002,
+   "p1": 0.86,
+   "p5": 0.92,
+   "pct_target": 89.5,
+   "total_dc": 42117.5365,
+   "mean_lat_us": 14615.9511764,
+   "avg_ef": 2000
+  },
+  {
+   "name": "FAISS fixed(ef=3000)",
+   "mean_r": 0.9890190000000001,
+   "p1": 0.91,
+   "p5": 0.95,
+   "pct_target": 95.88,
+   "total_dc": 60457.6167,
+   "mean_lat_us": 26923.541857099997,
+   "avg_ef": 3000
+  }
+ ],
+ "hnswlib_setting_R": {
+  "Ada-ef (as shipped)": {
+   "mean_r": 0.952327,
+   "p1": 0.7,
+   "pct_target": 70.15,
+   "saving_dc_pct": 0.0697100552671468,
+   "saving_lat_pct": -1.2144759384759969,
+   "p1_gain": -0.040614913250686446,
+   "p5_gain": 0.0020113009358154743
+  },
+  "Ada-ef (WAE floor)": {
+   "mean_r": 0.962166,
+   "p1": 0.7799000000000001,
+   "pct_target": 75.61,
+   "saving_dc_pct": 3.2371098868819184,
+   "saving_lat_pct": 2.7892296296821497,
+   "p1_gain": -0.0013448543978820116,
+   "p5_gain": 0.001004116481694295
+  },
+  "Ours (K=1, Isotonic)": {
+   "mean_r": 0.94957,
+   "p1": 0.74,
+   "pct_target": 66.32000000000001,
+   "saving_dc_pct": 1.9247354021511194,
+   "saving_lat_pct": 0.9022336488327745,
+   "p1_gain": 0.00994521277095628,
+   "p5_gain": -7.849230639978e-05
+  }
+ }
+}

@@ -1,0 +1,125 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  Unified benchmark: deep1b   settings=['P', 'R']
+══════════════════════════════════════════════════════════════════════════════════════════
+  corpus 2000000 x 96 (of 2000000 rows) | K=100 | test 8000 | R-calib 2000 | P-calib 200
+  Big-ANN deep1b, first 2000000 rows of the 1B file (subset); 10000 public queries, 2000 R-calibration, 8000 tested; KS 0.067, predicted ours (uncertain)
+  KS (score vs Ada-ef's CLT Normal, 30 test queries): 0.0635
+
+[4] building Ada-ef's estimator the original way too (corpus fits in RAM) ...
+
+[5] loading index unified_cache/deep1b_2M/index_m16_efc500.index ...
+  elements 2000000, M 16, ef_construction 500 -> matches protocol
+  Ada-ef score check, streamed vs original statistics: 50/50 queries identical, max |diff| 0 (OK)
+
+[6] fixed ef on 8000 test queries ...
+  Fixed(ef=100)    R=0.9008 p1=0.590 DC=2541 lat=309us
+  Fixed(ef=125)    R=0.9255 p1=0.640 DC=3129 lat=367us
+  Fixed(ef=150)    R=0.9416 p1=0.690 DC=3717 lat=417us
+  Fixed(ef=175)    R=0.9529 p1=0.720 DC=4306 lat=480us
+  Fixed(ef=200)    R=0.9613 p1=0.740 DC=4895 lat=523us
+  Fixed(ef=250)    R=0.9727 p1=0.790 DC=6071 lat=632us
+  Fixed(ef=300)    R=0.9797 p1=0.820 DC=7248 lat=750us
+  Fixed(ef=350)    R=0.9844 p1=0.850 DC=8425 lat=837us
+  Fixed(ef=400)    R=0.9877 p1=0.870 DC=9601 lat=954us
+  Fixed(ef=500)    R=0.9919 p1=0.900 DC=11950 lat=1153us
+  Fixed(ef=600)    R=0.9943 p1=0.930 DC=14297 lat=1361us
+  Fixed(ef=700)    R=0.9958 p1=0.940 DC=16642 lat=1542us
+  Fixed(ef=800)    R=0.9967 p1=0.950 DC=18986 lat=1760us
+  Fixed(ef=1000)   R=0.9979 p1=0.960 DC=23670 lat=2131us
+  Fixed(ef=1250)   R=0.9987 p1=0.970 DC=29518 lat=2577us
+  Fixed(ef=1500)   R=0.9991 p1=0.980 DC=35359 lat=3034us
+  Fixed(ef=2000)   R=0.9996 p1=0.990 DC=47028 lat=3922us
+  Fixed(ef=3000)   R=0.9998 p1=0.990 DC=70321 lat=5699us
+  Fixed(ef=5000)   R=0.9999 p1=1.000 DC=116785 lat=9107us
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting P: calibration on 200 corpus points (paper protocol)
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 150, P90 300, capped 0.0%
+  Ada-ef (as shipped)      R=0.9596 p1=0.770 hit=73.3% DC=4777 lat=623us
+  Ada-ef (WAE floor)       R=0.9652 p1=0.780 hit=77.8% DC=5177 lat=647us
+  Ours (K=1, Isotonic)     R=0.9621 p1=0.820 hit=73.9% DC=4712 lat=524us
+  Ours (K=1, Mean)         R=0.9554 p1=0.770 hit=69.7% DC=4526 lat=500us
+  Ours (K=1, P90)          R=0.9635 p1=0.780 hit=76.8% DC=5512 lat=609us
+  Ours (K=1, P70)          R=0.9575 p1=0.780 hit=71.5% DC=4840 lat=543us
+  Ours (K=8, Isotonic)     R=0.9641 p1=0.800 hit=77.4% DC=4786 lat=545us
+  Ours (K=8, Mean)         R=0.9632 p1=0.800 hit=76.5% DC=4781 lat=558us
+  Ours (K=8, P90)          R=0.9776 p1=0.860 hit=87.5% DC=7021 lat=780us
+  Ours (K=8, P70)          R=0.9673 p1=0.820 hit=79.8% DC=5183 lat=585us
+  Ours (K=50, Isotonic)    R=0.9701 p1=0.790 hit=82.6% DC=5386 lat=603us
+  Ours (K=50, Mean)        R=0.9700 p1=0.790 hit=82.5% DC=5389 lat=602us
+  Ours (K=50, P90)         R=0.9868 p1=0.890 hit=94.2% DC=8796 lat=945us
+  Ours (K=50, P70)         R=0.9755 p1=0.820 hit=86.7% DC=6104 lat=682us
+  latency pass: 6 methods x 8000 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=614us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=646us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=519us (median of 3 rounds)
+
+  SUMMARY deep1b / setting P   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9596  0.770  0.850   73.3      4777     194
+  Ada-ef (WAE floor)        0.9652  0.780  0.870   77.8      5177     211
+  Ours (K=1, Isotonic)      0.9621  0.820  0.880   73.9      4712     191
+  rho: Ada-ef -0.393 | ours K=1 -0.637, K=8 -0.727, K=50 -0.631
+  at Ada-ef's mean recall 0.9596: ours frontier -2.8% | fixed ef -0.5%
+  tail at that recall: Ada-ef p1 0.770 / fixed ef p1 0.736
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9596    -0.5%    -23.8%   +0.034   +0.007     614
+  Ada-ef (WAE floor)                0.9652    +0.9%    -19.9%   +0.025   +0.011     646
+  Ours (K=1, Isotonic)              0.9621    +4.9%     -0.8%   +0.077   +0.028     519
+  Choice (with Ada-ef as shipped)   0.9621    +4.9%     -0.8%   +0.077   +0.028     519
+  Choice (with Ada-ef WAE floor)    0.9621    +4.9%     -0.8%   +0.077   +0.028     519
+  diagnostics: floor 44.5%, capped 0.0%, headroom 1.70, Ada-ef distinct scores 21 (table efs 8), ours K=1 distinct scores 78
+  offline: Ada-ef stats 6s, table 0s, 0.04 MB | ours K=1 bins 1s, min-ef 0s, 0.8 KB
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting R: calibration on 2000 held-out real queries
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 150, P90 350, capped 0.0%
+  Ada-ef (as shipped)      R=0.9606 p1=0.790 hit=73.6% DC=4819 lat=620us
+  Ada-ef (WAE floor)       R=0.9675 p1=0.810 hit=79.0% DC=5351 lat=663us
+  Ours (K=1, Isotonic)     R=0.9610 p1=0.820 hit=72.9% DC=4689 lat=524us
+  Ours (K=1, Mean)         R=0.9604 p1=0.820 hit=72.5% DC=4689 lat=520us
+  Ours (K=1, P90)          R=0.9799 p1=0.880 hit=89.7% DC=7252 lat=784us
+  Ours (K=1, P70)          R=0.9635 p1=0.820 hit=75.4% DC=5076 lat=570us
+  Ours (K=8, Isotonic)     R=0.9629 p1=0.810 hit=76.1% DC=4689 lat=549us
+  Ours (K=8, Mean)         R=0.9627 p1=0.800 hit=76.1% DC=4685 lat=535us
+  Ours (K=8, P90)          R=0.9821 p1=0.880 hit=91.7% DC=7520 lat=831us
+  Ours (K=8, P70)          R=0.9656 p1=0.820 hit=78.7% DC=4962 lat=564us
+  Ours (K=50, Isotonic)    R=0.9635 p1=0.770 hit=78.0% DC=4804 lat=548us
+  Ours (K=50, Mean)        R=0.9635 p1=0.770 hit=78.0% DC=4805 lat=543us
+  Ours (K=50, P90)         R=0.9833 p1=0.870 hit=92.1% DC=7749 lat=842us
+  Ours (K=50, P70)         R=0.9676 p1=0.790 hit=80.5% DC=5169 lat=591us
+  latency pass: 6 methods x 8000 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=617us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=660us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=517us (median of 3 rounds)
+
+  SUMMARY deep1b / setting R   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9606  0.790  0.860   73.6      4819     196
+  Ada-ef (WAE floor)        0.9675  0.810  0.870   79.0      5351     219
+  Ours (K=1, Isotonic)      0.9610  0.820  0.880   72.9      4689     190
+  rho: Ada-ef -0.411 | ours K=1 -0.671, K=8 -0.697, K=50 -0.604
+  at Ada-ef's mean recall 0.9606: ours frontier -2.8% (bound) | fixed ef +0.3%
+  tail at that recall: Ada-ef p1 0.790 / fixed ef p1 0.738
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9606    +0.3%    -23.1%   +0.052   +0.013     617
+  Ada-ef (WAE floor)                0.9675    +1.8%    -18.2%   +0.045   +0.005     660
+  Ours (K=1, Isotonic)              0.9610    +3.7%     -2.4%   +0.081   +0.031     517
+  Choice (with Ada-ef as shipped)   0.9610    +3.7%     -2.4%   +0.081   +0.031     517
+  Choice (with Ada-ef WAE floor)    0.9610    +3.7%     -2.4%   +0.081   +0.031     517
+  diagnostics: floor 43.9%, capped 0.0%, headroom 1.82, Ada-ef distinct scores 55 (table efs 19), ours K=1 distinct scores 101
+  offline: Ada-ef stats 6s, table 3s, 0.04 MB | ours K=1 bins 1s, min-ef 3s, 0.8 KB
+
+Done in 10.5 min. Results in results_unified_deep1b_20261006_223352/

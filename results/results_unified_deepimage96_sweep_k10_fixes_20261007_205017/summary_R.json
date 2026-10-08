@@ -1,0 +1,147 @@
+{
+ "setting": "R",
+ "n_calib": 2000,
+ "rho_ada": -0.2560549705578802,
+ "rho_ours": {
+  "1": -0.4371959706179398
+ },
+ "choice": "ours",
+ "scorecard_vs_fixed": {
+  "Ada-ef (as shipped)": {
+   "saving_dc_pct": -6.9633818250456505,
+   "saving_lat_pct": -41.65213249294556,
+   "p1_gain": 0.005002412465425765,
+   "p5_gain": 0.005002412465425765,
+   "adapts": true
+  },
+  "Ada-ef (WAE floor)": {
+   "saving_dc_pct": -0.6441643876657581,
+   "saving_lat_pct": -26.71520556215307,
+   "p1_gain": 0.0958840986441627,
+   "p5_gain": -0.0041159013558372815,
+   "adapts": true
+  },
+  "Ours (K=1, Isotonic)": {
+   "saving_dc_pct": -4.598080282011404,
+   "saving_lat_pct": -13.325735644316683,
+   "p1_gain": 0.09999999999999998,
+   "p5_gain": 0.0,
+   "adapts": true
+  },
+  "Choice (with Ada-ef as shipped)": {
+   "saving_dc_pct": -4.598080282011404,
+   "saving_lat_pct": -13.325735644316683,
+   "p1_gain": 0.09999999999999998,
+   "p5_gain": 0.0,
+   "adapts": true
+  },
+  "Choice (with Ada-ef WAE floor)": {
+   "saving_dc_pct": -4.598080282011404,
+   "saving_lat_pct": -13.325735644316683,
+   "p1_gain": 0.09999999999999998,
+   "p5_gain": 0.0,
+   "adapts": true
+  },
+  "Ours (K=1, Isotonic, scaled)": {
+   "saving_dc_pct": -7.448858576493038,
+   "saving_lat_pct": -17.039400648833116,
+   "p1_gain": 0.08621617070074883,
+   "p5_gain": 0.08621617070074894,
+   "adapts": true
+  },
+  "Ours (K=1, Isotonic, L=30)": {
+   "saving_dc_pct": -5.064797556435021,
+   "saving_lat_pct": -14.795313841388078,
+   "p1_gain": 0.09999999999999998,
+   "p5_gain": 0.0,
+   "adapts": true
+  },
+  "Ours (K=1, Isotonic, L=30, scaled)": {
+   "saving_dc_pct": -5.870533403674903,
+   "saving_lat_pct": -14.286403809433454,
+   "p1_gain": 0.07898854413179779,
+   "p5_gain": 0.0789885441317979,
+   "adapts": true
+  }
+ },
+ "ablation_rho": null,
+ "diagnostics": {
+  "floor_share": 0.1125,
+  "capped_share": 0.001,
+  "headroom": 2.1564505100250244,
+  "min_ef_cv": 2.051865577697754,
+  "ada_distinct_scores": 34,
+  "ada_distinct_table_efs": 13,
+  "ours_k1_distinct_scores": 101
+ },
+ "offline": {
+  "ada": {
+   "statistics_s": null,
+   "score_calib_s": 0.716118335723877,
+   "table_s": 7.599348545074463,
+   "memory_bytes": 37904
+  },
+  "ours": {
+   "K=1": {
+    "bins_s": null,
+    "min_ef_s": 7.722832918167114,
+    "score_fit_s": 0.11775684356689453,
+    "memory_bytes": 808
+   }
+  },
+  "note": "statistics_s is the streaming mean+covariance pass (it also samples the KS pool); bins_s excludes the shared corpus read; K=1 also uses the corpus mean from that pass. None = computed by an earlier run, before timing was recorded."
+ },
+ "calib_min_ef_capped_frac": 0.001,
+ "ada": {
+  "name": "Ada-ef (as shipped)",
+  "mean_r": 0.9587374999999999,
+  "p1": 0.6,
+  "p5": 0.8,
+  "pct_target": 74.125,
+  "hnsw_dc": 3436.051,
+  "probe_dc": 0,
+  "total_dc": 3436.051,
+  "avg_ef": 131.4885,
+  "mean_lat_us": 546.4985410217196,
+  "p50_lat_us": 457.10126869380474,
+  "p99_lat_us": 1283.1013696268262,
+  "qps": 1829.8310515713836,
+  "distinct_ef": 33,
+  "wae": 117
+ },
+ "default": {
+  "name": "Ours (K=1, Isotonic)",
+  "mean_r": 0.9610500000000001,
+  "p1": 0.7,
+  "p5": 0.8,
+  "pct_target": 73.9875,
+  "hnsw_dc": 3502.398875,
+  "probe_dc": 1,
+  "total_dc": 3503.398875,
+  "avg_ef": 135.227375,
+  "mean_lat_us": 455.3576313192025,
+  "p50_lat_us": 315.81101939082146,
+  "p99_lat_us": 1518.2369109243155,
+  "qps": 2196.0760756395603,
+  "distinct_ef": 20
+ },
+ "ours_dc_at_ada_recall": {
+  "dc": 3387.562535425639,
+  "bound": false,
+  "via": [
+   "Ours (K=1, Isotonic, L=30, scaled)",
+   "Ours (K=1, Isotonic)"
+  ]
+ },
+ "ours_dc_at_ada_recall_pct": -1.4111683608410042,
+ "ours_dc_at_ada_target_hit": null,
+ "ours_dc_at_ada_target_hit_pct": null,
+ "fixed_dc_at_ada_recall": {
+  "dc": 3212.3619703985864,
+  "bound": false,
+  "via": "fixed ef, log-log interpolation"
+ },
+ "fixed_dc_at_ada_recall_pct": -6.5100613931927525,
+ "fixed_p1_at_ada_recall": 0.5949975875345742,
+ "fixed_p5_at_ada_recall": 0.7949975875345743
+}

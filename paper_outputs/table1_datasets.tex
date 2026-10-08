@@ -1,0 +1,26 @@
+\begin{tabular}{lllrrrrrrrrr}
+\toprule
+dataset & source & in Ada-ef paper & corpus & dim & K & test queries & KS & rho Ada-ef P & rho ours P & rho Ada-ef R & rho ours R \\
+\midrule
+MS Turing (2M) & Big-ANN & no & 2,000,000 & 100 & 100 & 10000 & 0.010 & -0.36 & -0.35 & -0.48 & -0.40 \\
+GloVe-100 & ann-benchmarks & yes & 1,183,514 & 100 & 100 & 8000 & 0.018 & -0.81 & -0.61 & -0.80 & -0.61 \\
+BIGANN (2M) & Big-ANN & no & 2,000,000 & 128 & 100 & 8000 & 0.029 & -0.42 & -0.74 & -0.42 & -0.74 \\
+LAION-I2I & LAION, shards 0-19 & yes (subset) & 19,639,187 & 512 & 1000 & 10000 & 0.034 & -0.59 & -0.56 & -0.57 & -0.53 \\
+DBpedia-1536 & DBpedia, OpenAI embeddings & no & 990,000 & 1536 & 100 & 8000 & 0.038 & -0.48 & -0.38 & -0.48 & -0.54 \\
+MS MARCO-384 & MS MARCO (MiniLM) & stand-in & 8,841,823 & 384 & 1000 & 6980 & 0.044 & -0.66 & -0.53 & -0.69 & -0.53 \\
+COCO-I2I & ann-benchmarks & no & 113,287 & 512 & 100 & 8000 & 0.046 & -0.33 & -0.39 & -0.35 & -0.36 \\
+Cohere-1024 & Cohere, files 00-04 & yes (subset) & 9,511,868 & 1024 & 1000 & 1174 & 0.049 & -0.59 & -0.40 & -0.79 & -0.52 \\
+Yahoo-MiniLM & VIBE & no & 677,305 & 384 & 100 & 700 & 0.054 & -0.55 & -0.54 & -0.50 & -0.68 \\
+COCO-T2I & ann-benchmarks & no & 113,287 & 512 & 100 & 8000 & 0.056 & -0.34 & -0.38 & -- & -- \\
+ImageNet-ALIGN & VIBE & no & 1,281,167 & 640 & 100 & 1000 & 0.058 & -0.17 & -0.23 & -- & -- \\
+DeepImage-96 & ann-benchmarks & yes & 9,990,000 & 96 & 100 & 8000 & 0.066 & -0.42 & -0.63 & -0.38 & -0.62 \\
+Deep1B (2M) & Big-ANN & no & 2,000,000 & 96 & 100 & 8000 & 0.067 & -0.39 & -0.64 & -0.41 & -0.67 \\
+Fashion-MNIST & ann-benchmarks & no & 60,000 & 784 & 100 & 8000 & 0.073 & -0.20 & -0.22 & -0.17 & -0.29 \\
+Landmark-DINO & VIBE & no & 760,757 & 768 & 100 & 700 & 0.076 & -0.45 & -0.61 & -0.34 & -0.55 \\
+Yambda & Yambda & no & 7,709,749 & 128 & 100 & 10000 & 0.090 & +0.02 & -0.41 & -0.03 & -0.43 \\
+GIST-960 & ann-benchmarks & no & 1,000,000 & 960 & 100 & 700 & 0.091 & -0.10 & -0.46 & +0.08 & -0.23 \\
+iNat-ResNet & VIBE & no & 499,000 & 2048 & 100 & 700 & 0.115 & -0.24 & -0.46 & -0.21 & -0.46 \\
+SIFT-1M & ann-benchmarks & no & 1,000,000 & 128 & 100 & 8000 & 0.126 & +0.08 & -0.33 & -0.04 & -0.45 \\
+Last.fm & ann-benchmarks & no & 292,385 & 65 & 100 & 10000 & 0.216 & +0.07 & +0.23 & -- & -- \\
+\bottomrule
+\end{tabular}

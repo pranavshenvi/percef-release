@@ -1,0 +1,147 @@
+{
+ "setting": "P",
+ "n_calib": 200,
+ "rho_ada": -0.4181495594678193,
+ "rho_ours": {
+  "1": -0.6317043120878337,
+  "8": -0.727249854370084,
+  "50": -0.6223985849496204
+ },
+ "choice": "ours",
+ "scorecard_vs_fixed": {
+  "Ada-ef (as shipped)": {
+   "saving_dc_pct": -9.192492463425864,
+   "saving_lat_pct": -24.82628192174213,
+   "p1_gain": 0.03823140908076206,
+   "p5_gain": 0.01823140908076204,
+   "adapts": true
+  },
+  "Ada-ef (WAE floor)": {
+   "saving_dc_pct": -4.717295625375137,
+   "saving_lat_pct": -18.596141242690138,
+   "p1_gain": 0.0262972761079876,
+   "p5_gain": 0.007531517405325094,
+   "adapts": true
+  },
+  "Ours (K=1, Isotonic)": {
+   "saving_dc_pct": -2.524072244226646,
+   "saving_lat_pct": -8.878367066376391,
+   "p1_gain": 0.08137033275316141,
+   "p5_gain": 0.04109626620252915,
+   "adapts": true
+  },
+  "Choice (with Ada-ef as shipped)": {
+   "saving_dc_pct": -2.524072244226646,
+   "saving_lat_pct": -8.878367066376391,
+   "p1_gain": 0.08137033275316141,
+   "p5_gain": 0.04109626620252915,
+   "adapts": true
+  },
+  "Choice (with Ada-ef WAE floor)": {
+   "saving_dc_pct": -2.524072244226646,
+   "saving_lat_pct": -8.878367066376391,
+   "p1_gain": 0.08137033275316141,
+   "p5_gain": 0.04109626620252915,
+   "adapts": true
+  }
+ },
+ "ablation_rho": null,
+ "diagnostics": {
+  "floor_share": 0.365,
+  "capped_share": 0.0,
+  "headroom": 1.9178062677383423,
+  "min_ef_cv": 1.09345543384552,
+  "ada_distinct_scores": 12,
+  "ada_distinct_table_efs": 10,
+  "ours_k1_distinct_scores": 70
+ },
+ "offline": {
+  "ada": {
+   "statistics_s": null,
+   "score_calib_s": 0.0941169261932373,
+   "table_s": null,
+   "memory_bytes": 37728
+  },
+  "ours": {
+   "K=1": {
+    "bins_s": 3.082423210144043,
+    "min_ef_s": null,
+    "score_fit_s": 0.01685333251953125,
+    "memory_bytes": 808
+   },
+   "K=8": {
+    "bins_s": null,
+    "min_ef_s": null,
+    "score_fit_s": 0.014986038208007812,
+    "memory_bytes": 3636
+   },
+   "K=50": {
+    "bins_s": null,
+    "min_ef_s": null,
+    "score_fit_s": 0.018353700637817383,
+    "memory_bytes": 20560
+   }
+  },
+  "note": "statistics_s is the streaming mean+covariance pass (it also samples the KS pool); bins_s excludes the shared corpus read; K=1 also uses the corpus mean from that pass. None = computed by an earlier run, before timing was recorded."
+ },
+ "calib_min_ef_capped_frac": 0.0,
+ "ada": {
+  "name": "Ada-ef (as shipped)",
+  "mean_r": 0.952435,
+  "p1": 0.72,
+  "p5": 0.82,
+  "pct_target": 69.5875,
+  "hnsw_dc": 6898.4655,
+  "probe_dc": 0,
+  "total_dc": 6898.4655,
+  "avg_ef": 276.3865,
+  "mean_lat_us": 912.6546939951368,
+  "p50_lat_us": 761.5305949002504,
+  "p99_lat_us": 5421.099169179802,
+  "qps": 1095.7046587055943,
+  "distinct_ef": 16,
+  "wae": 255
+ },
+ "default": {
+  "name": "Ours (K=1, Isotonic)",
+  "mean_r": 0.9515337500000001,
+  "p1": 0.76,
+  "p5": 0.84,
+  "pct_target": 67.10000000000001,
+  "hnsw_dc": 6388.227125,
+  "probe_dc": 1,
+  "total_dc": 6389.227125,
+  "avg_ef": 254.222875,
+  "mean_lat_us": 786.8393216631375,
+  "p50_lat_us": 576.8127739429474,
+  "p99_lat_us": 2374.971150420606,
+  "qps": 1270.907506104685,
+  "distinct_ef": 16
+ },
+ "ours_dc_at_ada_recall": {
+  "dc": 6163.266719457206,
+  "bound": false,
+  "via": [
+   "Ours (K=8, Mean)",
+   "Ours (K=8, Isotonic)"
+  ]
+ },
+ "ours_dc_at_ada_recall_pct": -10.657424909101804,
+ "ours_dc_at_ada_target_hit": {
+  "dc": 6183.021146103896,
+  "bound": false,
+  "via": [
+   "Ours (K=8, Mean)",
+   "Ours (K=8, Isotonic)"
+  ]
+ },
+ "ours_dc_at_ada_target_hit_pct": -10.371065186831826,
+ "fixed_dc_at_ada_recall": {
+  "dc": 6317.710443610075,
+  "bound": false,
+  "via": "fixed ef, log-log interpolation"
+ },
+ "fixed_dc_at_ada_recall_pct": -8.418612173822206,
+ "fixed_p1_at_ada_recall": 0.6817685909192379,
+ "fixed_p5_at_ada_recall": 0.8017685909192379
+}

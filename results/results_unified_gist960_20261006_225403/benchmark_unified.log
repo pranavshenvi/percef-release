@@ -1,0 +1,125 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  Unified benchmark: gist960   settings=['P', 'R']
+══════════════════════════════════════════════════════════════════════════════════════════
+  corpus 1000000 x 960 (of 1000000 rows) | K=100 | test 700 | R-calib 300 | P-calib 200
+  ann-benchmarks file; 1000 test queries, 300 held out for R-calibration
+  KS (score vs Ada-ef's CLT Normal, 30 test queries): 0.0925
+
+[4] building Ada-ef's estimator the original way too (corpus fits in RAM) ...
+
+[5] loading index unified_cache/gist960/index_m16_efc500.index ...
+  elements 1000000, M 16, ef_construction 500 -> matches protocol
+  Ada-ef score check, streamed vs original statistics: 50/50 queries identical, max |diff| 0 (OK)
+
+[6] fixed ef on 700 test queries ...
+  Fixed(ef=100)    R=0.7163 p1=0.390 DC=2881 lat=1437us
+  Fixed(ef=125)    R=0.7600 p1=0.450 DC=3530 lat=1812us
+  Fixed(ef=150)    R=0.7927 p1=0.500 DC=4179 lat=2130us
+  Fixed(ef=175)    R=0.8204 p1=0.550 DC=4834 lat=2429us
+  Fixed(ef=200)    R=0.8412 p1=0.580 DC=5490 lat=2755us
+  Fixed(ef=250)    R=0.8722 p1=0.630 DC=6793 lat=3324us
+  Fixed(ef=300)    R=0.8954 p1=0.660 DC=8104 lat=3870us
+  Fixed(ef=350)    R=0.9122 p1=0.680 DC=9408 lat=4549us
+  Fixed(ef=400)    R=0.9248 p1=0.730 DC=10715 lat=5089us
+  Fixed(ef=500)    R=0.9421 p1=0.780 DC=13323 lat=6180us
+  Fixed(ef=600)    R=0.9541 p1=0.800 DC=15930 lat=7212us
+  Fixed(ef=700)    R=0.9627 p1=0.840 DC=18530 lat=7670us
+  Fixed(ef=800)    R=0.9686 p1=0.850 DC=21125 lat=8331us
+  Fixed(ef=1000)   R=0.9769 p1=0.880 DC=26302 lat=10062us
+  Fixed(ef=1250)   R=0.9834 p1=0.900 DC=32763 lat=12076us
+  Fixed(ef=1500)   R=0.9877 p1=0.920 DC=39201 lat=14106us
+  Fixed(ef=2000)   R=0.9921 p1=0.940 DC=52029 lat=17968us
+  Fixed(ef=3000)   R=0.9958 p1=0.960 DC=77581 lat=25206us
+  Fixed(ef=5000)   R=0.9982 p1=0.980 DC=128286 lat=36992us
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting P: calibration on 200 corpus points (paper protocol)
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 350, P90 950, capped 0.5%
+  Ada-ef (as shipped)      R=0.9444 p1=0.770 hit=57.7% DC=14188 lat=5692us
+  Ada-ef (WAE floor)       R=0.9509 p1=0.790 hit=62.1% DC=15417 lat=6133us
+  Ours (K=1, Isotonic)     R=0.9572 p1=0.810 hit=67.6% DC=16711 lat=6134us
+  Ours (K=1, Mean)         R=0.9571 p1=0.810 hit=67.3% DC=16733 lat=6067us
+  Ours (K=1, P90)          R=0.9787 p1=0.880 hit=89.4% DC=27546 lat=9178us
+  Ours (K=1, P70)          R=0.9621 p1=0.840 hit=72.4% DC=18187 lat=6523us
+  Ours (K=8, Isotonic)     R=0.9573 p1=0.810 hit=67.6% DC=16742 lat=6150us
+  Ours (K=8, Mean)         R=0.9572 p1=0.810 hit=67.4% DC=16764 lat=6069us
+  Ours (K=8, P90)          R=0.9788 p1=0.880 hit=89.4% DC=27602 lat=9395us
+  Ours (K=8, P70)          R=0.9621 p1=0.840 hit=72.6% DC=18222 lat=6481us
+  Ours (K=50, Isotonic)    R=0.9572 p1=0.800 hit=67.6% DC=16837 lat=6195us
+  Ours (K=50, Mean)        R=0.9572 p1=0.800 hit=67.4% DC=16844 lat=6141us
+  Ours (K=50, P90)         R=0.9787 p1=0.880 hit=89.4% DC=27716 lat=9437us
+  Ours (K=50, P70)         R=0.9621 p1=0.840 hit=72.6% DC=18308 lat=6550us
+  latency pass: 6 methods x 700 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=5455us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=5884us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=5980us (median of 3 rounds)
+
+  SUMMARY gist960 / setting P   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9444  0.770  0.840   57.7     14188     535
+  Ada-ef (WAE floor)        0.9509  0.790  0.860   62.1     15417     583
+  Ours (K=1, Isotonic)      0.9572  0.810  0.870   67.6     16711     629
+  rho: Ada-ef -0.101 | ours K=1 -0.459, K=8 -0.458, K=50 -0.454
+  at Ada-ef's mean recall 0.9444: ours frontier +17.8% (bound) | fixed ef -3.2%
+  tail at that recall: Ada-ef p1 0.770 / fixed ef p1 0.783
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9444    -3.3%     -7.9%   -0.013   -0.005    5455
+  Ada-ef (WAE floor)                0.9509    -2.0%     -7.2%   -0.004   -0.001    5884
+  Ours (K=1, Isotonic)              0.9572    +0.3%     -0.0%   -0.003   -0.006    5980
+  Choice (with Ada-ef as shipped)   0.9572    +0.3%     -0.0%   -0.003   -0.006    5980
+  Choice (with Ada-ef WAE floor)    0.9572    +0.3%     -0.0%   -0.003   -0.006    5980
+  diagnostics: floor 12.5%, capped 0.5%, headroom 1.79, Ada-ef distinct scores 11 (table efs 9), ours K=1 distinct scores 6
+  offline: Ada-ef stats n/a, table n/a, 3.69 MB | ours K=1 bins n/a, min-ef n/a, 3.9 KB
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting R: calibration on 300 held-out real queries
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 500, P90 1200, capped 0.0%
+  Ada-ef (as shipped)      R=0.9520 p1=0.750 hit=65.9% DC=16277 lat=5997us
+  Ada-ef (WAE floor)       R=0.9571 p1=0.810 hit=67.9% DC=16794 lat=6273us
+  Ours (K=1, Isotonic)     R=0.9515 p1=0.780 hit=63.1% DC=15375 lat=5595us
+  Ours (K=1, Mean)         R=0.9515 p1=0.780 hit=63.1% DC=15375 lat=5600us
+  Ours (K=1, P90)          R=0.9802 p1=0.880 hit=91.4% DC=30583 lat=10237us
+  Ours (K=1, P70)          R=0.9606 p1=0.810 hit=71.9% DC=18046 lat=6540us
+  Ours (K=8, Isotonic)     R=0.9511 p1=0.770 hit=63.1% DC=15342 lat=5603us
+  Ours (K=8, Mean)         R=0.9511 p1=0.770 hit=63.1% DC=15342 lat=5599us
+  Ours (K=8, P90)          R=0.9797 p1=0.880 hit=91.4% DC=30608 lat=10200us
+  Ours (K=8, P70)          R=0.9603 p1=0.800 hit=72.0% DC=18064 lat=6490us
+  Ours (K=50, Isotonic)    R=0.9508 p1=0.770 hit=62.7% DC=15371 lat=5709us
+  Ours (K=50, Mean)        R=0.9508 p1=0.770 hit=62.7% DC=15371 lat=5652us
+  Ours (K=50, P90)         R=0.9798 p1=0.880 hit=91.4% DC=30795 lat=10014us
+  Ours (K=50, P70)         R=0.9604 p1=0.800 hit=72.0% DC=18184 lat=6476us
+  latency pass: 6 methods x 700 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=6114us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=6295us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=5558us (median of 3 rounds)
+
+  SUMMARY gist960 / setting R   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9520  0.750  0.860   65.9     16277     612
+  Ada-ef (WAE floor)        0.9571  0.810  0.870   67.9     16794     634
+  Ours (K=1, Isotonic)      0.9515  0.780  0.860   63.1     15375     577
+  rho: Ada-ef +0.079 | ours K=1 -0.227, K=8 -0.183, K=50 -0.134
+  at Ada-ef's mean recall 0.9520: ours frontier -4.5% | fixed ef -5.4%
+  tail at that recall: Ada-ef p1 0.750 / fixed ef p1 0.796
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9520    -5.7%    -10.8%   -0.046   -0.004    6114
+  Ada-ef (WAE floor)                0.9571    -0.3%     -5.8%   -0.003   -0.006    6295
+  Ours (K=1, Isotonic)              0.9515    -0.8%     -1.6%   -0.015   -0.002    5558
+  Choice (with Ada-ef as shipped)   0.9515    -0.8%     -1.6%   -0.015   -0.002    5558
+  Choice (with Ada-ef WAE floor)    0.9515    -0.8%     -1.6%   -0.015   -0.002    5558
+  diagnostics: floor 6.0%, capped 0.0%, headroom 2.04, Ada-ef distinct scores 10 (table efs 7), ours K=1 distinct scores 3
+  offline: Ada-ef stats n/a, table n/a, 3.69 MB | ours K=1 bins n/a, min-ef n/a, 3.9 KB
+
+Done in 8.1 min. Results in results_unified_gist960_20261006_225403/

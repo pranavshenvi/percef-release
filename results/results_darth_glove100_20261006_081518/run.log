@@ -1,0 +1,79 @@
+== glove100 (CUSTOM_GLOVE100): k=100 train=1500 val=500 test=8000 efSearch<=3000 target=0.95
+== training traces (1500 queries, every 10 distance computations)
+== training the predictor
+
+trained on 7529409 rows / 1500 queries in 20.2s; D = 22111
+== tuning prediction intervals on 500 validation queries (D = 22110.702666666668)
+  ipi  22111 mpi  22111: recall 0.9772, dists 35219
+  ipi  22111 mpi  11055: recall 0.9763, dists 34263
+  ipi  22111 mpi   5528: recall 0.9757, dists 33780
+  ipi  22111 mpi   2764: recall 0.9753, dists 33522
+  ipi  22111 mpi   2211: recall 0.9753, dists 33472
+  ipi  22111 mpi   1382: recall 0.9753, dists 33416
+  ipi  22111 mpi   1106: recall 0.9751, dists 33397
+  ipi  11055 mpi  11055: recall 0.9727, dists 28742
+  ipi  11055 mpi   5528: recall 0.9713, dists 27751
+  ipi  11055 mpi   2764: recall 0.9709, dists 27417
+  ipi  11055 mpi   2211: recall 0.9708, dists 27292
+  ipi  11055 mpi   1382: recall 0.9704, dists 27153
+  ipi  11055 mpi   1106: recall 0.9704, dists 27109
+  ipi   5528 mpi   5528: recall 0.9689, dists 26001
+  ipi   5528 mpi   2764: recall 0.9677, dists 25274
+  ipi   5528 mpi   2211: recall 0.9673, dists 25185
+  ipi   5528 mpi   1382: recall 0.9667, dists 24971
+  ipi   5528 mpi   1106: recall 0.9663, dists 24891
+  ipi   2764 mpi   2764: recall 0.9657, dists 24804
+  ipi   2764 mpi   2211: recall 0.9649, dists 24641
+  ipi   2764 mpi   1382: recall 0.9640, dists 24355
+  ipi   2764 mpi   1106: recall 0.9634, dists 24227
+chosen ipi 2764 mpi 1106 (validation recall 0.9634)
+== DARTH test: 8000 queries, ipi=2764 mpi=1106
+Index[M=16, efC=500, efS=3000]IndexTime: 0.743534s, SearchTime: 98.806309s, TotalTime: 100.150603s, Recall@100: 0.9616
+== FAISS fixed-ef grid on the same test queries
+  ef=100 Index[M=16, efC=500, efS=100]IndexTime: 0.670641s, SearchTime: 4.277038s, TotalTime: 5.505680s, Recall@100: 0.7143
+  ef=125 Index[M=16, efC=500, efS=125]IndexTime: 0.706048s, SearchTime: 6.353485s, TotalTime: 7.625722s, Recall@100: 0.7452
+  ef=150 Index[M=16, efC=500, efS=150]IndexTime: 0.696936s, SearchTime: 7.229869s, TotalTime: 8.491339s, Recall@100: 0.7684
+  ef=175 Index[M=16, efC=500, efS=175]IndexTime: 0.692276s, SearchTime: 8.123704s, TotalTime: 9.378961s, Recall@100: 0.7869
+  ef=200 Index[M=16, efC=500, efS=200]IndexTime: 0.681675s, SearchTime: 9.034951s, TotalTime: 10.279798s, Recall@100: 0.8019
+  ef=250 Index[M=16, efC=500, efS=250]IndexTime: 0.671742s, SearchTime: 9.169324s, TotalTime: 10.399291s, Recall@100: 0.8253
+  ef=300 Index[M=16, efC=500, efS=300]IndexTime: 0.674134s, SearchTime: 10.824185s, TotalTime: 12.056643s, Recall@100: 0.8433
+  ef=350 Index[M=16, efC=500, efS=350]IndexTime: 0.672639s, SearchTime: 12.654918s, TotalTime: 13.885729s, Recall@100: 0.8574
+  ef=400 Index[M=16, efC=500, efS=400]IndexTime: 0.671879s, SearchTime: 14.425172s, TotalTime: 15.655349s, Recall@100: 0.8690
+  ef=500 Index[M=16, efC=500, efS=500]IndexTime: 0.675985s, SearchTime: 18.252666s, TotalTime: 19.486727s, Recall@100: 0.8871
+  ef=600 Index[M=16, efC=500, efS=600]IndexTime: 0.674970s, SearchTime: 22.436032s, TotalTime: 23.671787s, Recall@100: 0.9005
+  ef=700 Index[M=16, efC=500, efS=700]IndexTime: 0.722609s, SearchTime: 27.324163s, TotalTime: 28.644868s, Recall@100: 0.9111
+  ef=800 Index[M=16, efC=500, efS=800]IndexTime: 0.680310s, SearchTime: 31.145166s, TotalTime: 32.369389s, Recall@100: 0.9198
+  ef=1000 Index[M=16, efC=500, efS=1000]IndexTime: 0.673356s, SearchTime: 41.151543s, TotalTime: 42.385613s, Recall@100: 0.9330
+  ef=1250 Index[M=16, efC=500, efS=1250]IndexTime: 0.744589s, SearchTime: 55.340400s, TotalTime: 56.686044s, Recall@100: 0.9449
+  ef=1500 Index[M=16, efC=500, efS=1500]IndexTime: 0.673631s, SearchTime: 70.563468s, TotalTime: 71.795701s, Recall@100: 0.9535
+  ef=2000 Index[M=16, efC=500, efS=2000]IndexTime: 0.671837s, SearchTime: 106.656850s, TotalTime: 107.886804s, Recall@100: 0.9651
+  ef=3000 Index[M=16, efC=500, efS=3000]IndexTime: 0.674265s, SearchTime: 201.157388s, TotalTime: 202.389382s, Recall@100: 0.9777
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.7144  0.160   22.0     2614      473
+  FAISS fixed(ef=125)                 0.7452  0.190   27.3     3154      727
+  FAISS fixed(ef=150)                 0.7684  0.220   30.9     3679      833
+  FAISS fixed(ef=175)                 0.7869  0.240   34.4     4197      946
+  FAISS fixed(ef=200)                 0.8019  0.270   37.2     4708     1058
+  FAISS fixed(ef=250)                 0.8253  0.310   41.6     5708     1081
+  FAISS fixed(ef=300)                 0.8433  0.350   45.0     6692     1285
+  FAISS fixed(ef=350)                 0.8574  0.380   47.6     7656     1508
+  FAISS fixed(ef=400)                 0.8690  0.410   49.9     8603     1731
+  FAISS fixed(ef=500)                 0.8871  0.460   53.8    10465     2207
+  FAISS fixed(ef=600)                 0.9005  0.500   56.7    12281     2726
+  FAISS fixed(ef=700)                 0.9111  0.530   59.3    14062     3335
+  FAISS fixed(ef=800)                 0.9198  0.570   61.8    15813     3815
+  FAISS fixed(ef=1000)                0.9330  0.620   65.4    19239     5063
+  FAISS fixed(ef=1250)                0.9449  0.670   69.2    23405     6836
+  FAISS fixed(ef=1500)                0.9535  0.710   72.0    27465     8739
+  FAISS fixed(ef=2000)                0.9651  0.770   77.1    35326    13249
+  FAISS fixed(ef=3000)                0.9777  0.830   84.2    50291    25060
+  DARTH (FAISS)                       0.9616  0.830   72.9    27446    12260   +15.5%     -6.3%   +0.080
+
+  Same queries, HNSWlib, setting R (each against its own library's fixed ef):
+  Ada-ef (as shipped)                 0.9532  0.780   66.2    41085     5492   +11.5%     +0.0%   +0.073
+  Ada-ef (WAE floor)                  0.9739  0.860   81.0    57851     7147   +26.5%    +21.3%   +0.048
+  Ours (K=1, Isotonic)                0.9428  0.690   65.9    35509     4451    +5.9%     +1.4%   +0.029
+
+  wrote /home/user/percef-release/results_darth_glove100_20261006_081518/summary.json
+== done: /home/user/percef-release/results_darth_glove100_20261006_081518

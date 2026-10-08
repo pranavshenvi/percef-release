@@ -1,0 +1,143 @@
+{
+ "setting": "R",
+ "n_calib": 2000,
+ "rho_ada": -0.47744126077330157,
+ "rho_ours": {
+  "1": -0.4017082551848071
+ },
+ "choice": "Ada-ef",
+ "scorecard_vs_fixed": {
+  "Ada-ef (as shipped)": {
+   "saving_dc_pct": 0.5087396222367648,
+   "saving_lat_pct": -1.4125435967199802,
+   "p1_gain": -0.03836354892300886,
+   "p5_gain": 0.003727338307743411,
+   "adapts": true
+  },
+  "Ada-ef (WAE floor)": {
+   "saving_dc_pct": 3.2371098868819184,
+   "saving_lat_pct": 2.304460079613511,
+   "p1_gain": -0.0013448543978820116,
+   "p5_gain": 0.001004116481694295,
+   "adapts": true
+  },
+  "Ours (K=1, Isotonic)": {
+   "saving_dc_pct": 2.4339061026764996,
+   "saving_lat_pct": 0.9079253894115178,
+   "p1_gain": 0.012606716710587107,
+   "p5_gain": 0.0019501621276213355,
+   "adapts": true
+  },
+  "Choice (with Ada-ef as shipped)": {
+   "saving_dc_pct": 0.5087396222367648,
+   "saving_lat_pct": -1.4125435967199802,
+   "p1_gain": -0.03836354892300886,
+   "p5_gain": 0.003727338307743411,
+   "adapts": true
+  },
+  "Choice (with Ada-ef WAE floor)": {
+   "saving_dc_pct": 3.2371098868819184,
+   "saving_lat_pct": 2.304460079613511,
+   "p1_gain": -0.0013448543978820116,
+   "p5_gain": 0.001004116481694295,
+   "adapts": true
+  },
+  "Ada-ef L=100 (as shipped)": {
+   "saving_dc_pct": -2.486238877414692,
+   "saving_lat_pct": -3.3700197438293196,
+   "p1_gain": -0.029495049108757554,
+   "p5_gain": 0.0028787131684319123,
+   "adapts": true
+  },
+  "Ada-ef L=100 (WAE floor)": {
+   "saving_dc_pct": -0.05727823954312423,
+   "saving_lat_pct": -0.5093240589155215,
+   "p1_gain": -7.383520538084554e-06,
+   "p5_gain": -5.906816430423234e-06,
+   "adapts": true
+  },
+  "Ours (K=1, Isotonic, L=1025)": {
+   "saving_dc_pct": 2.4330550641692543,
+   "saving_lat_pct": -1.0195111026147514,
+   "p1_gain": 0.0036296617202147274,
+   "p5_gain": 0.002715457646045971,
+   "adapts": true
+  }
+ },
+ "ablation_rho": {
+  "ada_L100": -0.20844571724868233,
+  "ours_L1025": -0.5797734212692122
+ },
+ "diagnostics": {
+  "floor_share": 0.101,
+  "capped_share": 0.0235,
+  "headroom": 2.335036039352417,
+  "min_ef_cv": 0.9680935740470886,
+  "ada_distinct_scores": 91,
+  "ada_distinct_table_efs": 48,
+  "ours_k1_distinct_scores": 23
+ },
+ "offline": {
+  "ada": {
+   "statistics_s": 5.220594644546509,
+   "score_calib_s": 1.0830259323120117,
+   "table_s": 206.24852442741394,
+   "memory_bytes": 41528
+  },
+  "ours": {
+   "K=1": {
+    "bins_s": 0.6465139389038086,
+    "min_ef_s": 257.45247769355774,
+    "score_fit_s": 0.11630845069885254,
+    "memory_bytes": 768
+   }
+  },
+  "note": "statistics_s is the streaming mean+covariance pass (it also samples the KS pool); bins_s excludes the shared corpus read; K=1 also uses the corpus mean from that pass. None = computed by an earlier run, before timing was recorded."
+ },
+ "calib_min_ef_capped_frac": 0.0235,
+ "ada": {
+  "name": "Ada-ef (as shipped)",
+  "mean_r": 0.952327,
+  "p1": 0.7,
+  "p5": 0.83,
+  "pct_target": 70.15,
+  "hnsw_dc": 31846.9981,
+  "probe_dc": 0,
+  "total_dc": 31846.9981,
+  "avg_ef": 1291.1684,
+  "mean_lat_us": 4480.895042931661,
+  "p50_lat_us": 4053.4441359341145,
+  "p99_lat_us": 9870.041389949622,
+  "qps": 223.16969945043436,
+  "distinct_ef": 68,
+  "wae": 1289
+ },
+ "default": {
+  "name": "Ours (K=1, Isotonic)",
+  "mean_r": 0.94957,
+  "p1": 0.74,
+  "p5": 0.82,
+  "pct_target": 66.32000000000001,
+  "hnsw_dc": 29649.0806,
+  "probe_dc": 1,
+  "total_dc": 29650.0806,
+  "avg_ef": 1201.8463,
+  "mean_lat_us": 4162.131306575611,
+  "p50_lat_us": 4577.999003231525,
+  "p99_lat_us": 5158.829502761364,
+  "qps": 240.2615214037418,
+  "distinct_ef": 8
+ },
+ "ours_dc_at_ada_recall": null,
+ "ours_dc_at_ada_recall_pct": null,
+ "ours_dc_at_ada_target_hit": null,
+ "ours_dc_at_ada_target_hit_pct": null,
+ "fixed_dc_at_ada_recall": {
+  "dc": 32009.84486383887,
+  "bound": false,
+  "via": "fixed ef, log-log interpolation"
+ },
+ "fixed_dc_at_ada_recall_pct": 0.5113410165929213,
+ "fixed_p1_at_ada_recall": 0.7383635489230088,
+ "fixed_p5_at_ada_recall": 0.8262726616922565
+}

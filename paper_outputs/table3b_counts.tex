@@ -1,0 +1,21 @@
+\begin{tabular}{llrlrllllr}
+\toprule
+group & method & runs & cheaper than fixed (DC) & worst DC saving & faster than fixed (latency) & p1 >= fixed & cheaper at equal p1 & faster at equal p1 & median time saving at equal p1 \\
+\midrule
+all, same modality & Ours & 34 & 32/34 & -2.5\% & 26/34 & 31/34 & 31/34 & 31/34 & +14.7\% \\
+all, same modality & Ada-ef & 34 & 10/34 & -24.6\% & 3/34 & 22/34 & 19/34 & 11/34 & -15.3\% \\
+all, same modality & Ada-ef WAE & 34 & 17/34 & -24.6\% & 8/34 & 23/34 & 24/34 & 14/34 & -4.8\% \\
+KS >= 0.0655 & Ours & 16 & 14/16 & -2.5\% & 8/16 & 13/16 & 13/16 & 13/16 & +14.2\% \\
+KS >= 0.0655 & Ada-ef & 16 & 2/16 & -24.6\% & 0/16 & 6/16 & 4/16 & 1/16 & -26.9\% \\
+KS >= 0.0655 & Ada-ef WAE & 16 & 3/16 & -24.6\% & 0/16 & 7/16 & 7/16 & 2/16 & -22.7\% \\
+band 0.044-0.0655 & Ours & 8 & 8/8 & +3.4\% & 8/8 & 8/8 & 8/8 & 8/8 & +14.7\% \\
+band 0.044-0.0655 & Ada-ef & 8 & 4/8 & -7.4\% & 2/8 & 8/8 & 7/8 & 6/8 & +22.3\% \\
+band 0.044-0.0655 & Ada-ef WAE & 8 & 6/8 & -6.6\% & 3/8 & 8/8 & 8/8 & 6/8 & +19.9\% \\
+KS < 0.044 & Ours & 10 & 10/10 & +1.9\% & 10/10 & 10/10 & 10/10 & 10/10 & +15.0\% \\
+KS < 0.044 & Ada-ef & 10 & 4/10 & -12.4\% & 1/10 & 8/10 & 8/10 & 4/10 & -4.0\% \\
+KS < 0.044 & Ada-ef WAE & 10 & 8/10 & -2.1\% & 5/10 & 8/10 & 9/10 & 6/10 & +1.3\% \\
+cross-modal & Ours & 6 & 1/6 & -1.0\% & 0/6 & 5/6 & 5/6 & 4/6 & +0.5\% \\
+cross-modal & Ada-ef & 6 & 0/6 & -10.3\% & 0/6 & 4/6 & 1/6 & 0/6 & -22.5\% \\
+cross-modal & Ada-ef WAE & 6 & 1/6 & -10.3\% & 0/6 & 3/6 & 1/6 & 0/6 & -22.5\% \\
+\bottomrule
+\end{tabular}

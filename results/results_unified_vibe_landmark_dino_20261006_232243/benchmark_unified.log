@@ -1,0 +1,125 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  Unified benchmark: vibe_landmark_dino   settings=['P', 'R']
+══════════════════════════════════════════════════════════════════════════════════════════
+  corpus 760757 x 768 (of 760757 rows) | K=100 | test 700 | R-calib 300 | P-calib 200
+  VIBE landmark-dino-768-cosine; 1000 test queries, 300 held out for R-calibration
+  KS (score vs Ada-ef's CLT Normal, 30 test queries): 0.0751
+
+[4] building Ada-ef's estimator the original way too (corpus fits in RAM) ...
+
+[5] loading index unified_cache/vibe_landmark_dino/index_m16_efc500.index ...
+  elements 760757, M 16, ef_construction 500 -> matches protocol
+  Ada-ef score check, streamed vs original statistics: 50/50 queries identical, max |diff| 0 (OK)
+
+[6] fixed ef on 700 test queries ...
+  Fixed(ef=100)    R=0.9323 p1=0.690 DC=2449 lat=1474us
+  Fixed(ef=125)    R=0.9510 p1=0.750 DC=3020 lat=1608us
+  Fixed(ef=150)    R=0.9634 p1=0.790 DC=3591 lat=1283us
+  Fixed(ef=175)    R=0.9718 p1=0.810 DC=4162 lat=1445us
+  Fixed(ef=200)    R=0.9772 p1=0.830 DC=4731 lat=1615us
+  Fixed(ef=250)    R=0.9845 p1=0.870 DC=5870 lat=1808us
+  Fixed(ef=300)    R=0.9891 p1=0.900 DC=7012 lat=2001us
+  Fixed(ef=350)    R=0.9919 p1=0.920 DC=8150 lat=2363us
+  Fixed(ef=400)    R=0.9937 p1=0.930 DC=9287 lat=2575us
+  Fixed(ef=500)    R=0.9961 p1=0.940 DC=11557 lat=3076us
+  Fixed(ef=600)    R=0.9972 p1=0.960 DC=13829 lat=3443us
+  Fixed(ef=700)    R=0.9980 p1=0.970 DC=16092 lat=3632us
+  Fixed(ef=800)    R=0.9986 p1=0.970 DC=18358 lat=4041us
+  Fixed(ef=1000)   R=0.9992 p1=0.980 DC=22885 lat=4863us
+  Fixed(ef=1250)   R=0.9995 p1=0.990 DC=28530 lat=5859us
+  Fixed(ef=1500)   R=0.9998 p1=0.990 DC=34170 lat=6939us
+  Fixed(ef=2000)   R=0.9999 p1=0.990 DC=45432 lat=9226us
+  Fixed(ef=3000)   R=0.9999 p1=1.000 DC=67919 lat=13068us
+  Fixed(ef=5000)   R=1.0000 p1=1.000 DC=112697 lat=19758us
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting P: calibration on 200 corpus points (paper protocol)
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 100, P90 250, capped 0.0%
+  Ada-ef (as shipped)      R=0.9621 p1=0.800 hit=75.9% DC=4004 lat=1457us
+  Ada-ef (WAE floor)       R=0.9748 p1=0.850 hit=84.6% DC=4679 lat=1607us
+  Ours (K=1, Isotonic)     R=0.9694 p1=0.840 hit=81.3% DC=3912 lat=1258us
+  Ours (K=1, Mean)         R=0.9690 p1=0.830 hit=80.9% DC=3942 lat=1186us
+  Ours (K=1, P90)          R=0.9785 p1=0.850 hit=88.6% DC=5674 lat=1571us
+  Ours (K=1, P70)          R=0.9700 p1=0.830 hit=81.3% DC=4052 lat=1175us
+  Ours (K=8, Isotonic)     R=0.9751 p1=0.850 hit=85.7% DC=4239 lat=1402us
+  Ours (K=8, Mean)         R=0.9750 p1=0.850 hit=85.7% DC=4242 lat=1260us
+  Ours (K=8, P90)          R=0.9876 p1=0.900 hit=94.9% DC=6605 lat=1808us
+  Ours (K=8, P70)          R=0.9789 p1=0.850 hit=89.1% DC=4714 lat=1512us
+  Ours (K=50, Isotonic)    R=0.9764 p1=0.850 hit=85.7% DC=4574 lat=1373us
+  Ours (K=50, Mean)        R=0.9764 p1=0.850 hit=85.7% DC=4574 lat=1362us
+  Ours (K=50, P90)         R=0.9904 p1=0.920 hit=95.9% DC=7371 lat=2139us
+  Ours (K=50, P70)         R=0.9748 p1=0.830 hit=84.1% DC=4411 lat=1331us
+  latency pass: 7 methods x 700 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=1440us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=1605us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=1145us (median of 3 rounds)
+
+  SUMMARY vibe_landmark_dino / setting P   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9621  0.800  0.860   75.9      4004     168
+  Ada-ef (WAE floor)        0.9748  0.850  0.900   84.6      4679     198
+  Ours (K=1, Isotonic)      0.9694  0.840  0.900   81.3      3912     164
+  rho: Ada-ef -0.447 | ours K=1 -0.609, K=8 -0.511, K=50 -0.368
+  at Ada-ef's mean recall 0.9621: ours frontier -2.3% (bound) | fixed ef -12.2%
+  tail at that recall: Ada-ef p1 0.800 / fixed ef p1 0.785
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9621   -13.9%    -39.4%   +0.015   +0.005    1440
+  Ada-ef (WAE floor)                0.9748    -5.2%    -27.7%   +0.030   +0.010    1605
+  Ours (K=1, Isotonic)              0.9694    +1.4%     +0.0%   +0.037   +0.026    1145
+  Choice (with Ada-ef as shipped)   0.9694    +1.4%     +0.0%   +0.037   +0.026    1145
+  Choice (with Ada-ef WAE floor)    0.9694    +1.4%     +0.0%   +0.037   +0.026    1145
+  diagnostics: floor 63.5%, capped 0.0%, headroom 1.65, Ada-ef distinct scores 74 (table efs 9), ours K=1 distinct scores 62
+  offline: Ada-ef stats n/a, table n/a, 2.37 MB | ours K=1 bins n/a, min-ef n/a, 3.5 KB
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting R: calibration on 300 held-out real queries
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 100, P90 250, capped 0.0%
+  Ada-ef (as shipped)      R=0.9547 p1=0.760 hit=71.6% DC=3362 lat=1280us
+  Ada-ef (WAE floor)       R=0.9682 p1=0.800 hit=80.9% DC=3946 lat=1429us
+  Ours (K=1, Isotonic)     R=0.9681 p1=0.840 hit=79.9% DC=3725 lat=1233us
+  Ours (K=1, Mean)         R=0.9683 p1=0.840 hit=80.0% DC=3763 lat=1115us
+  Ours (K=1, P90)          R=0.9807 p1=0.890 hit=89.9% DC=5266 lat=1473us
+  Ours (K=1, P70)          R=0.9668 p1=0.820 hit=78.6% DC=3700 lat=1083us
+  Ours (K=8, Isotonic)     R=0.9687 p1=0.810 hit=81.6% DC=3722 lat=1126us
+  Ours (K=8, Mean)         R=0.9688 p1=0.810 hit=81.6% DC=3725 lat=1147us
+  Ours (K=8, P90)          R=0.9829 p1=0.870 hit=92.3% DC=5406 lat=1663us
+  Ours (K=8, P70)          R=0.9693 p1=0.820 hit=81.1% DC=3853 lat=1157us
+  Ours (K=50, Isotonic)    R=0.9655 p1=0.780 hit=78.4% DC=3671 lat=1143us
+  Ours (K=50, Mean)        R=0.9655 p1=0.780 hit=78.4% DC=3671 lat=1141us
+  Ours (K=50, P90)         R=0.9822 p1=0.860 hit=90.7% DC=5353 lat=1580us
+  Ours (K=50, P70)         R=0.9600 p1=0.780 hit=74.7% DC=3393 lat=1184us
+  latency pass: 6 methods x 700 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=1281us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=1430us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=1097us (median of 3 rounds)
+
+  SUMMARY vibe_landmark_dino / setting R   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9547  0.760  0.850   71.6      3362     139
+  Ada-ef (WAE floor)        0.9682  0.800  0.880   80.9      3946     165
+  Ours (K=1, Isotonic)      0.9681  0.840  0.890   79.9      3725     156
+  rho: Ada-ef -0.343 | ours K=1 -0.555, K=8 -0.577, K=50 -0.318
+  at Ada-ef's mean recall 0.9547: ours frontier +0.9% (bound) | fixed ef -5.8%
+  tail at that recall: Ada-ef p1 0.760 / fixed ef p1 0.761
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9547    -6.2%    -36.5%   -0.001   +0.019    1281
+  Ada-ef (WAE floor)                0.9682    -1.6%    -27.9%   -0.001   +0.009    1430
+  Ours (K=1, Isotonic)              0.9681    +4.0%     +1.8%   +0.039   +0.019    1097
+  Choice (with Ada-ef as shipped)   0.9681    +4.0%     +1.8%   +0.039   +0.019    1097
+  Choice (with Ada-ef WAE floor)    0.9681    +4.0%     +1.8%   +0.039   +0.019    1097
+  diagnostics: floor 59.3%, capped 0.0%, headroom 1.65, Ada-ef distinct scores 82 (table efs 9), ours K=1 distinct scores 73
+  offline: Ada-ef stats n/a, table n/a, 2.37 MB | ours K=1 bins n/a, min-ef n/a, 3.5 KB
+
+Done in 2.8 min. Results in results_unified_vibe_landmark_dino_20261006_232243/

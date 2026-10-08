@@ -1,0 +1,8 @@
+{
+ "rows": 3166023,
+ "queries": 1500,
+ "train_s": 5.64,
+ "D": 2115.6666666666665,
+ "reached_share": 1.0,
+ "model": "/home/user/percef-release/results_darth_sift128_20261006_083659/model.txt"
+}

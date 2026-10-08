@@ -1,0 +1,137 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  Unified benchmark: bigann   settings=['P', 'R']
+══════════════════════════════════════════════════════════════════════════════════════════
+  corpus 2000000 x 128 (of 2000000 rows) | K=100 | test 8000 | R-calib 2000 | P-calib 200
+  Big-ANN bigann, first 2000000 rows of the 1B file (subset); 10000 public queries, 2000 R-calibration, 8000 tested; KS 0.029, predicted Ada-ef
+
+[1] streaming pass: mean, covariance, KS pool, P-calibration rows ...
+  KS (score vs Ada-ef's CLT Normal, 30 test queries): 0.0292
+
+[2] streaming ground truth, top-100 for 10200 queries ...
+
+[3] cluster bins for K_clusters=[1, 8, 50] ...
+
+[4] building Ada-ef's estimator the original way too (corpus fits in RAM) ...
+
+[5] building index (M=16, ef_construction=500) chunk by chunk ...
+    ... 1000000/2000000 (365s)
+    ... 2000000/2000000 (833s)
+  Ada-ef score check, streamed vs original statistics: 50/50 queries identical, max |diff| 0 (OK)
+
+[6] fixed ef on 8000 test queries ...
+  Fixed(ef=100)    R=0.9053 p1=0.650 DC=2530 lat=480us
+  Fixed(ef=150)    R=0.9464 p1=0.750 DC=3707 lat=672us
+  Fixed(ef=200)    R=0.9662 p1=0.800 DC=4886 lat=859us
+  Fixed(ef=300)    R=0.9836 p1=0.880 DC=7246 lat=1214us
+  Fixed(ef=400)    R=0.9907 p1=0.920 DC=9604 lat=1562us
+  Fixed(ef=600)    R=0.9961 p1=0.950 DC=14318 lat=2229us
+  Fixed(ef=800)    R=0.9981 p1=0.970 DC=19028 lat=2866us
+  Fixed(ef=1000)   R=0.9989 p1=0.980 DC=23736 lat=3491us
+  Fixed(ef=1500)   R=0.9996 p1=0.990 DC=35494 lat=5000us
+  Fixed(ef=2000)   R=0.9998 p1=0.990 DC=47242 lat=6454us
+  Fixed(ef=3000)   R=0.9999 p1=1.000 DC=70721 lat=9286us
+  Fixed(ef=5000)   R=1.0000 p1=1.000 DC=117621 lat=14677us
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting P: calibration on 200 corpus points (paper protocol)
+══════════════════════════════════════════════════════════════════════════════════════════
+  true min-ef per calibration query ...
+  calib min-ef: median 150, P90 250, capped 0.0%
+  Ada-ef ef-estimation table (group-average probing) ...
+  Ada-ef (as shipped)      R=0.9558 p1=0.800 hit=68.7% DC=4081 lat=847us
+  Ada-ef (WAE floor)       R=0.9578 p1=0.800 hit=70.1% DC=4183 lat=861us
+  Ours (K=1, Isotonic)     R=0.9652 p1=0.840 hit=78.0% DC=4420 lat=823us
+  Ours (K=1, Mean)         R=0.9615 p1=0.830 hit=73.8% DC=4360 lat=813us
+  Ours (K=1, P90)          R=0.9708 p1=0.850 hit=83.1% DC=5396 lat=991us
+  Ours (K=1, P70)          R=0.9653 p1=0.840 hit=77.5% DC=4742 lat=876us
+  Ours (K=8, Isotonic)     R=0.9667 p1=0.840 hit=79.5% DC=4562 lat=864us
+  Ours (K=8, Mean)         R=0.9659 p1=0.830 hit=78.7% DC=4546 lat=866us
+  Ours (K=8, P90)          R=0.9815 p1=0.890 hit=92.3% DC=6611 lat=1220us
+  Ours (K=8, P70)          R=0.9673 p1=0.840 hit=79.8% DC=4691 lat=885us
+  Ours (K=50, Isotonic)    R=0.9701 p1=0.830 hit=81.8% DC=4945 lat=918us
+  Ours (K=50, Mean)        R=0.9701 p1=0.830 hit=81.8% DC=4953 lat=920us
+  Ours (K=50, P90)         R=0.9870 p1=0.910 hit=95.7% DC=7768 lat=1390us
+  Ours (K=50, P70)         R=0.9738 p1=0.850 hit=85.1% DC=5322 lat=983us
+  latency pass: 15 methods x 8000 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=845us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=859us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=817us (median of 3 rounds)
+
+  SUMMARY bigann / setting P   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9558  0.800  0.860   68.7      4081     165
+  Ada-ef (WAE floor)        0.9578  0.800  0.860   70.1      4183     170
+  Ours (K=1, Isotonic)      0.9652  0.840  0.900   78.0      4420     178
+  rho: Ada-ef -0.417 | ours K=1 -0.742, K=8 -0.645, K=50 -0.574
+  at Ada-ef's mean recall 0.9558: ours frontier +6.8% (bound) | fixed ef +4.7%
+  tail at that recall: Ada-ef p1 0.800 / fixed ef p1 0.774
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9558    +4.4%    -12.0%   +0.026   +0.006     845
+  Ada-ef (WAE floor)                0.9578    +4.6%    -11.2%   +0.021   +0.001     859
+  Ours (K=1, Isotonic)              0.9652    +8.5%     +2.9%   +0.042   +0.022     817
+  Choice (with Ada-ef as shipped)   0.9652    +8.5%     +2.9%   +0.042   +0.022     817
+  Choice (with Ada-ef WAE floor)    0.9652    +8.5%     +2.9%   +0.042   +0.022     817
+  diagnostics: floor 45.0%, capped 0.0%, headroom 1.52, Ada-ef distinct scores 5 (table efs 4), ours K=1 distinct scores 80
+  offline: Ada-ef stats 5s, table 0s, 0.07 MB | ours K=1 bins 1s, min-ef 0s, 0.9 KB
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting R: calibration on 2000 held-out real queries
+══════════════════════════════════════════════════════════════════════════════════════════
+  true min-ef per calibration query ...
+    ... 250/2000
+    ... 500/2000
+    ... 750/2000
+    ... 1000/2000
+    ... 1250/2000
+    ... 1500/2000
+    ... 1750/2000
+    ... 2000/2000
+  calib min-ef: median 150, P90 300, capped 0.0%
+  Ada-ef ef-estimation table (group-average probing) ...
+  Ada-ef (as shipped)      R=0.9597 p1=0.800 hit=72.5% DC=4391 lat=898us
+  Ada-ef (WAE floor)       R=0.9633 p1=0.820 hit=75.2% DC=4591 lat=926us
+  Ours (K=1, Isotonic)     R=0.9639 p1=0.850 hit=76.9% DC=4367 lat=812us
+  Ours (K=1, Mean)         R=0.9637 p1=0.850 hit=76.5% DC=4369 lat=813us
+  Ours (K=1, P90)          R=0.9804 p1=0.890 hit=92.4% DC=6229 lat=1125us
+  Ours (K=1, P70)          R=0.9682 p1=0.860 hit=80.6% DC=4773 lat=882us
+  Ours (K=8, Isotonic)     R=0.9636 p1=0.830 hit=76.4% DC=4355 lat=829us
+  Ours (K=8, Mean)         R=0.9635 p1=0.830 hit=76.4% DC=4359 lat=830us
+  Ours (K=8, P90)          R=0.9831 p1=0.900 hit=93.8% DC=6746 lat=1237us
+  Ours (K=8, P70)          R=0.9671 p1=0.840 hit=79.7% DC=4633 lat=876us
+  Ours (K=50, Isotonic)    R=0.9620 p1=0.810 hit=75.0% DC=4349 lat=821us
+  Ours (K=50, Mean)        R=0.9620 p1=0.810 hit=75.0% DC=4350 lat=821us
+  Ours (K=50, P90)         R=0.9837 p1=0.900 hit=93.5% DC=6952 lat=1258us
+  Ours (K=50, P70)         R=0.9621 p1=0.800 hit=75.2% DC=4359 lat=823us
+  latency pass: 15 methods x 8000 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=896us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=924us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=810us (median of 3 rounds)
+
+  SUMMARY bigann / setting R   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9597  0.800  0.870   72.5      4391     178
+  Ada-ef (WAE floor)        0.9633  0.820  0.880   75.2      4591     187
+  Ours (K=1, Isotonic)      0.9639  0.850  0.900   76.9      4367     176
+  rho: Ada-ef -0.419 | ours K=1 -0.740, K=8 -0.667, K=50 -0.564
+  at Ada-ef's mean recall 0.9597: ours frontier -1.0% (bound) | fixed ef +2.6%
+  tail at that recall: Ada-ef p1 0.800 / fixed ef p1 0.784
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9597    +2.5%    -13.3%   +0.016   +0.006     896
+  Ada-ef (WAE floor)                0.9633    +2.6%    -12.1%   +0.027   +0.007     924
+  Ours (K=1, Isotonic)              0.9639    +8.1%     +2.3%   +0.056   +0.026     810
+  Choice (with Ada-ef as shipped)   0.9639    +8.1%     +2.3%   +0.056   +0.026     810
+  Choice (with Ada-ef WAE floor)    0.9639    +8.1%     +2.3%   +0.056   +0.026     810
+  diagnostics: floor 41.3%, capped 0.0%, headroom 1.71, Ada-ef distinct scores 11 (table efs 7), ours K=1 distinct scores 101
+  offline: Ada-ef stats 5s, table 3s, 0.07 MB | ours K=1 bins 1s, min-ef 3s, 0.9 KB
+
+Done in 69.4 min. Results in results_unified_bigann_20260929_013357/

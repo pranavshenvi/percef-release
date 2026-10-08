@@ -1,0 +1,125 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  Unified benchmark: vibe_imagenet_align   settings=['P', 'R']
+══════════════════════════════════════════════════════════════════════════════════════════
+  corpus 1281167 x 640 (of 1281167 rows) | K=100 | test 1000 | R-calib 2000 | P-calib 200
+  VIBE imagenet-align-640-normalized; all 1000 test queries; R-calibration: 2000 `learn` queries
+  KS (score vs Ada-ef's CLT Normal, 30 test queries): 0.0580
+
+[4] building Ada-ef's estimator the original way too (corpus fits in RAM) ...
+
+[5] loading index unified_cache/vibe_imagenet_align/index_m16_efc500.index ...
+  elements 1281167, M 16, ef_construction 500 -> matches protocol
+  Ada-ef score check, streamed vs original statistics: 50/50 queries identical, max |diff| 0 (OK)
+
+[6] fixed ef on 1000 test queries ...
+  Fixed(ef=100)    R=0.8719 p1=0.160 DC=2204 lat=622us
+  Fixed(ef=125)    R=0.8981 p1=0.289 DC=2699 lat=747us
+  Fixed(ef=150)    R=0.9160 p1=0.330 DC=3192 lat=845us
+  Fixed(ef=175)    R=0.9292 p1=0.489 DC=3691 lat=1012us
+  Fixed(ef=200)    R=0.9380 p1=0.509 DC=4184 lat=1114us
+  Fixed(ef=250)    R=0.9506 p1=0.600 DC=5170 lat=1283us
+  Fixed(ef=300)    R=0.9596 p1=0.660 DC=6161 lat=1531us
+  Fixed(ef=350)    R=0.9656 p1=0.690 DC=7150 lat=1711us
+  Fixed(ef=400)    R=0.9704 p1=0.730 DC=8134 lat=1887us
+  Fixed(ef=500)    R=0.9760 p1=0.740 DC=10097 lat=2250us
+  Fixed(ef=600)    R=0.9797 p1=0.770 DC=12060 lat=2657us
+  Fixed(ef=700)    R=0.9822 p1=0.790 DC=14023 lat=2988us
+  Fixed(ef=800)    R=0.9841 p1=0.810 DC=15988 lat=3319us
+  Fixed(ef=1000)   R=0.9870 p1=0.830 DC=19920 lat=4096us
+  Fixed(ef=1250)   R=0.9894 p1=0.850 DC=24845 lat=4691us
+  Fixed(ef=1500)   R=0.9908 p1=0.870 DC=29784 lat=5552us
+  Fixed(ef=2000)   R=0.9928 p1=0.890 DC=39673 lat=7291us
+  Fixed(ef=3000)   R=0.9949 p1=0.920 DC=59479 lat=10944us
+  Fixed(ef=5000)   R=0.9968 p1=0.940 DC=99074 lat=18229us
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting P: calibration on 200 corpus points (paper protocol)
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 100, P90 100, capped 0.0%
+  Ada-ef (as shipped)      R=0.9160 p1=0.330 hit=58.0% DC=3198 lat=1061us
+  Ada-ef (WAE floor)       R=0.9160 p1=0.330 hit=58.0% DC=3198 lat=1049us
+  Ours (K=1, Isotonic)     R=0.8859 p1=0.230 hit=40.6% DC=2426 lat=776us
+  Ours (K=1, Mean)         R=0.8827 p1=0.230 hit=38.5% DC=2367 lat=671us
+  Ours (K=1, P90)          R=0.8719 p1=0.160 hit=34.7% DC=2205 lat=630us
+  Ours (K=1, P70)          R=0.8719 p1=0.160 hit=34.7% DC=2205 lat=632us
+  Ours (K=8, Isotonic)     R=0.8837 p1=0.230 hit=39.2% DC=2393 lat=733us
+  Ours (K=8, Mean)         R=0.8837 p1=0.230 hit=39.2% DC=2393 lat=751us
+  Ours (K=8, P90)          R=0.9115 p1=0.320 hit=55.4% DC=3080 lat=862us
+  Ours (K=8, P70)          R=0.8719 p1=0.160 hit=34.7% DC=2212 lat=652us
+  Ours (K=50, Isotonic)    R=0.8807 p1=0.180 hit=37.9% DC=2394 lat=713us
+  Ours (K=50, Mean)        R=0.8807 p1=0.180 hit=37.9% DC=2394 lat=812us
+  Ours (K=50, P90)         R=0.8848 p1=0.230 hit=40.1% DC=2455 lat=734us
+  Ours (K=50, P70)         R=0.8719 p1=0.160 hit=34.7% DC=2254 lat=681us
+  latency pass: 7 methods x 1000 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=1051us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=1051us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=683us (median of 3 rounds)
+
+  SUMMARY vibe_imagenet_align / setting P   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9160  0.330  0.710   58.0      3198     150
+  Ada-ef (WAE floor)        0.9160  0.330  0.710   58.0      3198     150
+  Ours (K=1, Isotonic)      0.8859  0.230  0.640   40.6      2426     111
+  rho: Ada-ef -0.172 | ours K=1 -0.225, K=8 -0.232, K=50 -0.165
+  at Ada-ef's mean recall 0.9160: ours frontier n/a | fixed ef -0.1%
+  tail at that recall: Ada-ef p1 0.330 / fixed ef p1 0.330
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9160    -0.1%    -24.0%   -0.001   -0.000    1051   (one ef for all queries: no adaptation)
+  Ada-ef (WAE floor)                0.9160    -0.1%    -24.0%   -0.001   -0.000    1051   (one ef for all queries: no adaptation)
+  Ours (K=1, Isotonic)              0.8859    +0.6%     -0.4%   +0.004   -0.000     683   (one ef for all queries: no adaptation)
+  Choice (with Ada-ef as shipped)   0.8859    +0.6%     -0.4%   +0.004   -0.000     683   (one ef for all queries: no adaptation)
+  Choice (with Ada-ef WAE floor)    0.8859    +0.6%     -0.4%   +0.004   -0.000     683   (one ef for all queries: no adaptation)
+  diagnostics: floor 93.0%, capped 0.0%, headroom 0.96, Ada-ef distinct scores 71 (table efs 4), ours K=1 distinct scores 80
+  offline: Ada-ef stats n/a, table n/a, 1.64 MB | ours K=1 bins n/a, min-ef n/a, 3.0 KB
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting R: calibration on 2000 held-out real queries
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 150, P90 650, capped 0.5%
+  Ada-ef (as shipped)      R=0.9506 p1=0.600 hit=75.5% DC=5170 lat=1454us
+  Ada-ef (WAE floor)       R=0.9506 p1=0.600 hit=75.5% DC=5170 lat=1546us
+  Ours (K=1, Isotonic)     R=0.9628 p1=0.680 hit=80.5% DC=6714 lat=1553us
+  Ours (K=1, Mean)         R=0.9628 p1=0.680 hit=80.5% DC=6714 lat=1626us
+  Ours (K=1, P90)          R=0.9809 p1=0.770 hit=90.7% DC=13042 lat=2660us
+  Ours (K=1, P70)          R=0.9506 p1=0.600 hit=75.5% DC=5171 lat=1346us
+  Ours (K=8, Isotonic)     R=0.9628 p1=0.680 hit=80.5% DC=6721 lat=1578us
+  Ours (K=8, Mean)         R=0.9628 p1=0.680 hit=80.5% DC=6721 lat=1673us
+  Ours (K=8, P90)          R=0.9809 p1=0.770 hit=90.7% DC=13049 lat=2682us
+  Ours (K=8, P70)          R=0.9506 p1=0.600 hit=75.5% DC=5178 lat=1389us
+  Ours (K=50, Isotonic)    R=0.9628 p1=0.680 hit=80.5% DC=6763 lat=1616us
+  Ours (K=50, Mean)        R=0.9628 p1=0.680 hit=80.5% DC=6763 lat=1717us
+  Ours (K=50, P90)         R=0.9809 p1=0.770 hit=90.7% DC=13091 lat=2811us
+  Ours (K=50, P70)         R=0.9506 p1=0.600 hit=75.5% DC=5220 lat=1374us
+  latency pass: 7 methods x 1000 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=1468us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=1438us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=1534us (median of 3 rounds)
+
+  SUMMARY vibe_imagenet_align / setting R   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9506  0.600  0.790   75.5      5170     250
+  Ada-ef (WAE floor)        0.9506  0.600  0.790   75.5      5170     250
+  Ours (K=1, Isotonic)      0.9628  0.680  0.840   80.5      6714     328
+  rho: Ada-ef undefined (constant scores) | ours K=1 undefined (constant scores), K=8 undefined (constant scores), K=50 undefined (constant scores)
+  at Ada-ef's mean recall 0.9506: ours frontier +0.0% (bound) | fixed ef -0.0%
+  tail at that recall: Ada-ef p1 0.600 / fixed ef p1 0.600
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9506    -0.0%    -19.0%   +0.000   +0.000    1468   (one ef for all queries: no adaptation)
+  Ada-ef (WAE floor)                0.9506    -0.0%    -16.6%   +0.000   +0.000    1438   (one ef for all queries: no adaptation)
+  Ours (K=1, Isotonic)              0.9628    -1.0%     -0.9%   +0.005   -0.000    1534   (one ef for all queries: no adaptation)
+  Choice (with Ada-ef as shipped)   0.9628    -1.0%     -0.9%   +0.005   -0.000    1534   (one ef for all queries: no adaptation)
+  Choice (with Ada-ef WAE floor)    0.9628    -1.0%     -0.9%   +0.005   -0.000    1534   (one ef for all queries: no adaptation)
+  diagnostics: floor 36.3%, capped 0.5%, headroom 1.98, Ada-ef distinct scores 1 (table efs 1), ours K=1 distinct scores 1
+  offline: Ada-ef stats n/a, table n/a, 1.64 MB | ours K=1 bins n/a, min-ef n/a, 2.6 KB
+
+Done in 4.0 min. Results in results_unified_vibe_imagenet_align_20261006_200726/

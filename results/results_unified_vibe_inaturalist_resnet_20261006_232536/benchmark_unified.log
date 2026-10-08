@@ -1,0 +1,125 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  Unified benchmark: vibe_inaturalist_resnet   settings=['P', 'R']
+══════════════════════════════════════════════════════════════════════════════════════════
+  corpus 499000 x 2048 (of 499000 rows) | K=100 | test 700 | R-calib 300 | P-calib 200
+  VIBE inaturalist-resnet-2048-cosine; 1000 test queries, 300 held out for R-calibration
+  KS (score vs Ada-ef's CLT Normal, 30 test queries): 0.1090
+
+[4] building Ada-ef's estimator the original way too (corpus fits in RAM) ...
+
+[5] loading index unified_cache/vibe_inaturalist_resnet/index_m16_efc500.index ...
+  elements 499000, M 16, ef_construction 500 -> matches protocol
+  Ada-ef score check, streamed vs original statistics: 50/50 queries identical, max |diff| 0 (OK)
+
+[6] fixed ef on 700 test queries ...
+  Fixed(ef=100)    R=0.9638 p1=0.780 DC=2315 lat=1222us
+  Fixed(ef=125)    R=0.9760 p1=0.830 DC=2859 lat=1443us
+  Fixed(ef=150)    R=0.9834 p1=0.860 DC=3404 lat=1659us
+  Fixed(ef=175)    R=0.9877 p1=0.880 DC=3947 lat=1862us
+  Fixed(ef=200)    R=0.9912 p1=0.900 DC=4492 lat=2191us
+  Fixed(ef=250)    R=0.9946 p1=0.930 DC=5580 lat=2596us
+  Fixed(ef=300)    R=0.9962 p1=0.950 DC=6666 lat=2969us
+  Fixed(ef=350)    R=0.9973 p1=0.970 DC=7750 lat=3338us
+  Fixed(ef=400)    R=0.9981 p1=0.970 DC=8834 lat=3691us
+  Fixed(ef=500)    R=0.9987 p1=0.980 DC=10999 lat=4361us
+  Fixed(ef=600)    R=0.9992 p1=0.980 DC=13164 lat=5135us
+  Fixed(ef=700)    R=0.9995 p1=0.990 DC=15324 lat=5741us
+  Fixed(ef=800)    R=0.9997 p1=0.990 DC=17484 lat=6377us
+  Fixed(ef=1000)   R=0.9998 p1=0.990 DC=21794 lat=7600us
+  Fixed(ef=1250)   R=0.9999 p1=1.000 DC=27186 lat=8945us
+  Fixed(ef=1500)   R=0.9999 p1=1.000 DC=32572 lat=10040us
+  Fixed(ef=2000)   R=1.0000 p1=1.000 DC=43341 lat=12685us
+  Fixed(ef=3000)   R=1.0000 p1=1.000 DC=64858 lat=18316us
+  Fixed(ef=5000)   R=1.0000 p1=1.000 DC=107869 lat=28336us
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting P: calibration on 200 corpus points (paper protocol)
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 100, P90 150, capped 0.0%
+  Ada-ef (as shipped)      R=0.9694 p1=0.800 hit=81.3% DC=2771 lat=2750us
+  Ada-ef (WAE floor)       R=0.9745 p1=0.820 hit=84.9% DC=2963 lat=2874us
+  Ours (K=1, Isotonic)     R=0.9792 p1=0.880 hit=88.1% DC=2950 lat=1521us
+  Ours (K=1, Mean)         R=0.9792 p1=0.880 hit=88.3% DC=2968 lat=1642us
+  Ours (K=1, P90)          R=0.9850 p1=0.900 hit=93.4% DC=3957 lat=1918us
+  Ours (K=1, P70)          R=0.9819 p1=0.890 hit=91.3% DC=3286 lat=1752us
+  Ours (K=8, Isotonic)     R=0.9830 p1=0.870 hit=92.3% DC=3148 lat=1661us
+  Ours (K=8, Mean)         R=0.9830 p1=0.870 hit=92.3% DC=3148 lat=1726us
+  Ours (K=8, P90)          R=0.9902 p1=0.910 hit=97.0% DC=4128 lat=2080us
+  Ours (K=8, P70)          R=0.9871 p1=0.890 hit=94.1% DC=3539 lat=1802us
+  Ours (K=50, Isotonic)    R=0.9840 p1=0.870 hit=92.3% DC=3369 lat=1813us
+  Ours (K=50, Mean)        R=0.9840 p1=0.870 hit=92.3% DC=3369 lat=1803us
+  Ours (K=50, P90)         R=0.9935 p1=0.930 hit=98.0% DC=4974 lat=2420us
+  Ours (K=50, P70)         R=0.9883 p1=0.880 hit=94.1% DC=3878 lat=2102us
+  latency pass: 6 methods x 700 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=2703us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=2777us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=1608us (median of 3 rounds)
+
+  SUMMARY vibe_inaturalist_resnet / setting P   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9694  0.800  0.880   81.3      2771     116
+  Ada-ef (WAE floor)        0.9745  0.820  0.890   84.9      2963     126
+  Ours (K=1, Isotonic)      0.9792  0.880  0.920   88.1      2950     129
+  rho: Ada-ef -0.241 | ours K=1 -0.462, K=8 -0.440, K=50 -0.252
+  at Ada-ef's mean recall 0.9694: ours frontier +6.4% (bound) | fixed ef -8.8%
+  tail at that recall: Ada-ef p1 0.800 / fixed ef p1 0.801
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9694    -9.7%   -103.0%   -0.001   +0.002    2703
+  Ada-ef (WAE floor)                0.9745    -6.8%    -91.6%   -0.003   +0.003    2777
+  Ours (K=1, Isotonic)              0.9792    +3.7%     -2.2%   +0.038   +0.018    1608
+  Choice (with Ada-ef as shipped)   0.9792    +3.7%     -2.2%   +0.038   +0.018    1608
+  Choice (with Ada-ef WAE floor)    0.9792    +3.7%     -2.2%   +0.038   +0.018    1608
+  diagnostics: floor 81.0%, capped 0.0%, headroom 1.27, Ada-ef distinct scores 44 (table efs 5), ours K=1 distinct scores 77
+  offline: Ada-ef stats n/a, table n/a, 16.79 MB | ours K=1 bins n/a, min-ef n/a, 8.6 KB
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting R: calibration on 300 held-out real queries
+══════════════════════════════════════════════════════════════════════════════════════════
+  calib min-ef: median 100, P90 150, capped 0.0%
+  Ada-ef (as shipped)      R=0.9688 p1=0.800 hit=80.3% DC=2686 lat=2706us
+  Ada-ef (WAE floor)       R=0.9726 p1=0.830 hit=82.4% DC=2820 lat=2796us
+  Ours (K=1, Isotonic)     R=0.9761 p1=0.860 hit=86.6% DC=2744 lat=1520us
+  Ours (K=1, Mean)         R=0.9758 p1=0.860 hit=86.1% DC=2755 lat=1451us
+  Ours (K=1, P90)          R=0.9822 p1=0.890 hit=92.1% DC=3411 lat=1702us
+  Ours (K=1, P70)          R=0.9734 p1=0.840 hit=84.3% DC=2666 lat=1510us
+  Ours (K=8, Isotonic)     R=0.9763 p1=0.840 hit=88.4% DC=2735 lat=1473us
+  Ours (K=8, Mean)         R=0.9762 p1=0.840 hit=88.3% DC=2732 lat=1559us
+  Ours (K=8, P90)          R=0.9859 p1=0.890 hit=93.4% DC=3452 lat=1822us
+  Ours (K=8, P70)          R=0.9791 p1=0.860 hit=89.9% DC=2887 lat=1563us
+  Ours (K=50, Isotonic)    R=0.9743 p1=0.820 hit=85.0% DC=2755 lat=1649us
+  Ours (K=50, Mean)        R=0.9743 p1=0.820 hit=85.0% DC=2755 lat=1552us
+  Ours (K=50, P90)         R=0.9821 p1=0.860 hit=91.1% DC=3215 lat=1868us
+  Ours (K=50, P70)         R=0.9638 p1=0.780 hit=76.4% DC=2365 lat=1392us
+  latency pass: 6 methods x 700 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=2636us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=2712us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=1424us (median of 3 rounds)
+
+  SUMMARY vibe_inaturalist_resnet / setting R   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9688  0.800  0.880   80.3      2686     111
+  Ada-ef (WAE floor)        0.9726  0.830  0.900   82.4      2820     118
+  Ours (K=1, Isotonic)      0.9761  0.860  0.910   86.6      2744     120
+  rho: Ada-ef -0.214 | ours K=1 -0.456, K=8 -0.456, K=50 -0.295
+  at Ada-ef's mean recall 0.9688: ours frontier -6.1% | fixed ef -7.0%
+  tail at that recall: Ada-ef p1 0.800 / fixed ef p1 0.798
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9688    -7.5%   -101.3%   +0.002   +0.003    2636
+  Ada-ef (WAE floor)                0.9726    -5.5%    -95.6%   +0.016   +0.016    2712
+  Ours (K=1, Isotonic)              0.9761    +4.3%     +3.1%   +0.030   +0.020    1424
+  Choice (with Ada-ef as shipped)   0.9761    +4.3%     +3.1%   +0.030   +0.020    1424
+  Choice (with Ada-ef WAE floor)    0.9761    +4.3%     +3.1%   +0.030   +0.020    1424
+  diagnostics: floor 79.7%, capped 0.0%, headroom 1.27, Ada-ef distinct scores 65 (table efs 6), ours K=1 distinct scores 83
+  offline: Ada-ef stats n/a, table n/a, 16.79 MB | ours K=1 bins n/a, min-ef n/a, 8.6 KB
+
+Done in 4.1 min. Results in results_unified_vibe_inaturalist_resnet_20261006_232536/

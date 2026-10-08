@@ -1,0 +1,8 @@
+{
+ "rows": 9125131,
+ "queries": 1500,
+ "train_s": 18.66,
+ "D": 18267.450666666668,
+ "reached_share": 0.9593333333333334,
+ "model": "/home/user/percef-release/results_darth_msturing_20261006_091841/model.txt"
+}

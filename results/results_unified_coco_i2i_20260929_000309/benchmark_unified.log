@@ -1,0 +1,136 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  Unified benchmark: coco_i2i   settings=['P', 'R']
+══════════════════════════════════════════════════════════════════════════════════════════
+  corpus 113287 x 512 (of 113287 rows) | K=100 | test 8000 | R-calib 2000 | P-calib 200
+  ann-benchmarks coco-i2i-512-angular.hdf5; 10000 test queries, 2000 R-calibration, 8000 tested; KS 0.046, band
+
+[1] streaming pass: mean, covariance, KS pool, P-calibration rows ...
+  KS (score vs Ada-ef's CLT Normal, 30 test queries): 0.0440
+
+[2] streaming ground truth, top-100 for 10200 queries ...
+
+[3] cluster bins for K_clusters=[1, 8, 50] ...
+
+[4] building Ada-ef's estimator the original way too (corpus fits in RAM) ...
+
+[5] loading index unified_cache/coco_i2i/index_m16_efc500.index ...
+  elements 113287, M 16, ef_construction 500 -> matches protocol
+  Ada-ef score check, streamed vs original statistics: 50/50 queries identical, max |diff| 0 (OK)
+
+[6] fixed ef on 8000 test queries ...
+  Fixed(ef=100)    R=0.9812 p1=0.850 DC=2177 lat=414us
+  Fixed(ef=150)    R=0.9922 p1=0.910 DC=3203 lat=559us
+  Fixed(ef=200)    R=0.9960 p1=0.950 DC=4227 lat=691us
+  Fixed(ef=300)    R=0.9984 p1=0.970 DC=6267 lat=940us
+  Fixed(ef=400)    R=0.9992 p1=0.980 DC=8297 lat=1173us
+  Fixed(ef=600)    R=0.9997 p1=0.990 DC=12338 lat=1606us
+  Fixed(ef=800)    R=0.9999 p1=0.990 DC=16359 lat=2020us
+  Fixed(ef=1000)   R=0.9999 p1=1.000 DC=20361 lat=2405us
+  Fixed(ef=1500)   R=1.0000 p1=1.000 DC=30313 lat=3338us
+  Fixed(ef=2000)   R=1.0000 p1=1.000 DC=40219 lat=4219us
+  Fixed(ef=3000)   R=1.0000 p1=1.000 DC=59989 lat=5937us
+  Fixed(ef=5000)   R=1.0000 p1=1.000 DC=99552 lat=9221us
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting P: calibration on 200 corpus points (paper protocol)
+══════════════════════════════════════════════════════════════════════════════════════════
+  true min-ef per calibration query ...
+  calib min-ef: median 100, P90 105, capped 0.0%
+  Ada-ef ef-estimation table (group-average probing) ...
+  Ada-ef (as shipped)      R=0.9838 p1=0.870 hit=91.7% DC=2491 lat=590us
+  Ada-ef (WAE floor)       R=0.9845 p1=0.880 hit=92.2% DC=2526 lat=596us
+  Ours (K=1, Isotonic)     R=0.9853 p1=0.880 hit=93.3% DC=2337 lat=439us
+  Ours (K=1, Mean)         R=0.9851 p1=0.880 hit=93.0% DC=2325 lat=436us
+  Ours (K=1, P90)          R=0.9907 p1=0.920 hit=97.5% DC=2712 lat=500us
+  Ours (K=1, P70)          R=0.9822 p1=0.850 hit=90.6% DC=2257 lat=425us
+  Ours (K=8, Isotonic)     R=0.9854 p1=0.880 hit=92.9% DC=2385 lat=464us
+  Ours (K=8, Mean)         R=0.9854 p1=0.880 hit=92.9% DC=2385 lat=464us
+  Ours (K=8, P90)          R=0.9921 p1=0.920 hit=97.5% DC=2990 lat=556us
+  Ours (K=8, P70)          R=0.9812 p1=0.850 hit=90.1% DC=2185 lat=432us
+  Ours (K=50, Isotonic)    R=0.9858 p1=0.880 hit=93.0% DC=2496 lat=492us
+  Ours (K=50, Mean)        R=0.9858 p1=0.880 hit=93.0% DC=2496 lat=499us
+  Ours (K=50, P90)         R=0.9930 p1=0.920 hit=97.6% DC=3324 lat=613us
+  Ours (K=50, P70)         R=0.9812 p1=0.850 hit=90.1% DC=2227 lat=453us
+  latency pass: 15 methods x 8000 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=588us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=593us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=436us (median of 3 rounds)
+
+  SUMMARY coco_i2i / setting P   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9838  0.870  0.930   91.7      2491     104
+  Ada-ef (WAE floor)        0.9845  0.880  0.930   92.2      2526     106
+  Ours (K=1, Isotonic)      0.9853  0.880  0.940   93.3      2337     108
+  rho: Ada-ef -0.329 | ours K=1 -0.386, K=8 -0.309, K=50 -0.238
+  at Ada-ef's mean recall 0.9838: ours frontier -7.9% | fixed ef -3.1%
+  tail at that recall: Ada-ef p1 0.870 / fixed ef p1 0.864
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9838    -3.2%    -35.2%   +0.006   +0.001     588
+  Ada-ef (WAE floor)                0.9845    -1.7%    -33.5%   +0.012   -0.002     593
+  Ours (K=1, Isotonic)              0.9853    +8.8%     +4.2%   +0.007   +0.005     436
+  Choice (with Ada-ef as shipped)   0.9853    +8.8%     +4.2%   +0.007   +0.005     436
+  Choice (with Ada-ef WAE floor)    0.9853    +8.8%     +4.2%   +0.007   +0.005     436
+  diagnostics: floor 90.0%, capped 0.0%, headroom 0.99, Ada-ef distinct scores 61 (table efs 3), ours K=1 distinct scores 67
+  offline: Ada-ef stats 2s, table 0s, 1.05 MB | ours K=1 bins 0s, min-ef 0s, 2.5 KB
+
+══════════════════════════════════════════════════════════════════════════════════════════
+  Setting R: calibration on 2000 held-out real queries
+══════════════════════════════════════════════════════════════════════════════════════════
+  true min-ef per calibration query ...
+    ... 250/2000
+    ... 500/2000
+    ... 750/2000
+    ... 1000/2000
+    ... 1250/2000
+    ... 1500/2000
+    ... 1750/2000
+    ... 2000/2000
+  calib min-ef: median 100, P90 100, capped 0.0%
+  Ada-ef ef-estimation table (group-average probing) ...
+  Ada-ef (as shipped)      R=0.9847 p1=0.890 hit=92.8% DC=2514 lat=596us
+  Ada-ef (WAE floor)       R=0.9856 p1=0.890 hit=93.5% DC=2560 lat=610us
+  Ours (K=1, Isotonic)     R=0.9851 p1=0.880 hit=93.2% DC=2323 lat=436us
+  Ours (K=1, Mean)         R=0.9851 p1=0.880 hit=93.2% DC=2324 lat=436us
+  Ours (K=1, P90)          R=0.9893 p1=0.910 hit=96.5% DC=2588 lat=479us
+  Ours (K=1, P70)          R=0.9812 p1=0.850 hit=90.1% DC=2178 lat=412us
+  Ours (K=8, Isotonic)     R=0.9843 p1=0.870 hit=92.2% DC=2321 lat=459us
+  Ours (K=8, Mean)         R=0.9843 p1=0.870 hit=92.2% DC=2321 lat=454us
+  Ours (K=8, P90)          R=0.9906 p1=0.910 hit=96.7% DC=2789 lat=527us
+  Ours (K=8, P70)          R=0.9812 p1=0.850 hit=90.1% DC=2185 lat=433us
+  Ours (K=50, Isotonic)    R=0.9839 p1=0.870 hit=91.8% DC=2367 lat=474us
+  Ours (K=50, Mean)        R=0.9839 p1=0.870 hit=91.8% DC=2367 lat=474us
+  Ours (K=50, P90)         R=0.9916 p1=0.910 hit=97.0% DC=3091 lat=580us
+  Ours (K=50, P70)         R=0.9812 p1=0.850 hit=90.1% DC=2227 lat=453us
+  latency pass: 15 methods x 8000 queries x 3 rounds ...
+    latency round 1/3 done
+    latency round 2/3 done
+    latency round 3/3 done
+  Ada-ef (as shipped)      lat=594us (median of 3 rounds)
+  Ada-ef (WAE floor)       lat=601us (median of 3 rounds)
+  Ours (K=1, Isotonic)     lat=434us (median of 3 rounds)
+
+  SUMMARY coco_i2i / setting R   (DC includes our probe; target 0.95)
+  method                     meanR     p1     p5   hit%        DC  avg ef
+  Ada-ef (as shipped)       0.9847  0.890  0.930   92.8      2514     105
+  Ada-ef (WAE floor)        0.9856  0.890  0.940   93.5      2560     108
+  Ours (K=1, Isotonic)      0.9851  0.880  0.930   93.2      2323     107
+  rho: Ada-ef -0.348 | ours K=1 -0.365, K=8 -0.255, K=50 -0.133
+  at Ada-ef's mean recall 0.9847: ours frontier -7.6% | fixed ef -0.4%
+  tail at that recall: Ada-ef p1 0.890 / fixed ef p1 0.869
+
+  SCORECARD vs a tuned fixed ef at the same mean recall   (choice picked ours)
+  method                             meanR  save DC  save lat  p1 gain  p5 gain  lat us
+  Ada-ef (as shipped)               0.9847    -0.4%    -32.7%   +0.021   -0.003     594
+  Ada-ef (WAE floor)                0.9856    +1.2%    -30.8%   +0.016   +0.004     601
+  Ours (K=1, Isotonic)              0.9851    +8.6%     +4.0%   +0.009   -0.004     434
+  Choice (with Ada-ef as shipped)   0.9851    +8.6%     +4.0%   +0.009   -0.004     434
+  Choice (with Ada-ef WAE floor)    0.9851    +8.6%     +4.0%   +0.009   -0.004     434
+  diagnostics: floor 90.4%, capped 0.0%, headroom 0.93, Ada-ef distinct scores 100 (table efs 5), ours K=1 distinct scores 100
+  offline: Ada-ef stats 2s, table 1s, 1.05 MB | ours K=1 bins 0s, min-ef 1s, 2.5 KB
+
+Done in 34.2 min. Results in results_unified_coco_i2i_20260929_000309/

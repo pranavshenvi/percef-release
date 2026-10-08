@@ -1,0 +1,8 @@
+{
+ "rows": 7529409,
+ "queries": 1500,
+ "train_s": 20.16,
+ "D": 22110.702666666668,
+ "reached_share": 0.8433333333333334,
+ "model": "/home/user/percef-release/results_darth_glove100_20261006_081518/model.txt"
+}

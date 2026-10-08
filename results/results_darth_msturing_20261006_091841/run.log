@@ -1,0 +1,88 @@
+  exporting CUSTOM_MSTURING: 2000000 x 100 -> darth_data/CUSTOM_MSTURING
+    train: 1500 queries, top-100
+    validation: 500 queries, top-100
+    test: 10000 queries, top-100
+  done: darth_data/CUSTOM_MSTURING
+== msturing (CUSTOM_MSTURING): k=100 train=1500 val=500 test=10000 efSearch<=3000 target=0.95
+== building FAISS HNSW index
+>>Index saved to /home/user/percef-release/darth_data/CUSTOM_MSTURING/faiss_M16_efC500.index
+>>Index build time: 1279.510s
+Index[M=16, efC=500, efS=3000]IndexTime: 1279.509541s, SearchTime: 0.028729s, TotalTime: 1280.419022s, Recall@100: 1.0000
+== training traces (1500 queries, every 10 distance computations)
+== training the predictor
+
+trained on 9125131 rows / 1500 queries in 18.7s; D = 18267
+== tuning prediction intervals on 500 validation queries (D = 18267.450666666668)
+  ipi  18267 mpi  18267: recall 0.9819, dists 39917
+  ipi  18267 mpi   9134: recall 0.9802, dists 37727
+  ipi  18267 mpi   4567: recall 0.9789, dists 36573
+  ipi  18267 mpi   2283: recall 0.9783, dists 36044
+  ipi  18267 mpi   1827: recall 0.9780, dists 35934
+  ipi  18267 mpi   1142: recall 0.9779, dists 35799
+  ipi  18267 mpi    913: recall 0.9778, dists 35741
+  ipi   9134 mpi   9134: recall 0.9789, dists 36089
+  ipi   9134 mpi   4567: recall 0.9764, dists 34482
+  ipi   9134 mpi   2283: recall 0.9752, dists 33765
+  ipi   9134 mpi   1827: recall 0.9751, dists 33666
+  ipi   9134 mpi   1142: recall 0.9744, dists 33383
+  ipi   9134 mpi    913: recall 0.9745, dists 33331
+  ipi   4567 mpi   4567: recall 0.9757, dists 34112
+  ipi   4567 mpi   2283: recall 0.9737, dists 33249
+  ipi   4567 mpi   1827: recall 0.9733, dists 33090
+  ipi   4567 mpi   1142: recall 0.9728, dists 32850
+  ipi   4567 mpi    913: recall 0.9725, dists 32779
+  ipi   2283 mpi   2283: recall 0.9739, dists 33254
+  ipi   2283 mpi   1827: recall 0.9736, dists 33070
+  ipi   2283 mpi   1142: recall 0.9726, dists 32802
+  ipi   2283 mpi    913: recall 0.9726, dists 32693
+chosen ipi 2283 mpi 913 (validation recall 0.9726)
+== DARTH test: 10000 queries, ipi=2283 mpi=913
+Index[M=16, efC=500, efS=3000]IndexTime: 1.277638s, SearchTime: 145.813952s, TotalTime: 148.075242s, Recall@100: 0.9736
+== FAISS fixed-ef grid on the same test queries
+  ef=100 Index[M=16, efC=500, efS=100]IndexTime: 1.412071s, SearchTime: 6.594082s, TotalTime: 8.913242s, Recall@100: 0.7158
+  ef=125 Index[M=16, efC=500, efS=125]IndexTime: 1.426968s, SearchTime: 7.663312s, TotalTime: 9.996357s, Recall@100: 0.7512
+  ef=150 Index[M=16, efC=500, efS=150]IndexTime: 1.162036s, SearchTime: 8.046228s, TotalTime: 10.097482s, Recall@100: 0.7781
+  ef=175 Index[M=16, efC=500, efS=175]IndexTime: 1.158689s, SearchTime: 9.163593s, TotalTime: 11.208686s, Recall@100: 0.7996
+  ef=200 Index[M=16, efC=500, efS=200]IndexTime: 1.164184s, SearchTime: 10.276915s, TotalTime: 12.331465s, Recall@100: 0.8174
+  ef=250 Index[M=16, efC=500, efS=250]IndexTime: 1.168875s, SearchTime: 12.628666s, TotalTime: 14.687101s, Recall@100: 0.8441
+  ef=300 Index[M=16, efC=500, efS=300]IndexTime: 1.157483s, SearchTime: 15.096054s, TotalTime: 17.141761s, Recall@100: 0.8647
+  ef=350 Index[M=16, efC=500, efS=350]IndexTime: 1.445576s, SearchTime: 18.891925s, TotalTime: 21.302209s, Recall@100: 0.8804
+  ef=400 Index[M=16, efC=500, efS=400]IndexTime: 1.165292s, SearchTime: 20.218559s, TotalTime: 22.273756s, Recall@100: 0.8927
+  ef=500 Index[M=16, efC=500, efS=500]IndexTime: 1.168853s, SearchTime: 25.600051s, TotalTime: 27.658251s, Recall@100: 0.9118
+  ef=600 Index[M=16, efC=500, efS=600]IndexTime: 1.161689s, SearchTime: 31.400526s, TotalTime: 33.451298s, Recall@100: 0.9251
+  ef=700 Index[M=16, efC=500, efS=700]IndexTime: 1.162286s, SearchTime: 37.288840s, TotalTime: 39.339326s, Recall@100: 0.9357
+  ef=800 Index[M=16, efC=500, efS=800]IndexTime: 1.165180s, SearchTime: 44.045293s, TotalTime: 46.102724s, Recall@100: 0.9438
+  ef=1000 Index[M=16, efC=500, efS=1000]IndexTime: 1.164485s, SearchTime: 57.337699s, TotalTime: 59.391441s, Recall@100: 0.9557
+  ef=1250 Index[M=16, efC=500, efS=1250]IndexTime: 1.159722s, SearchTime: 77.112306s, TotalTime: 79.163600s, Recall@100: 0.9655
+  ef=1500 Index[M=16, efC=500, efS=1500]IndexTime: 1.196163s, SearchTime: 97.231361s, TotalTime: 99.316112s, Recall@100: 0.9723
+  ef=2000 Index[M=16, efC=500, efS=2000]IndexTime: 1.161678s, SearchTime: 147.004438s, TotalTime: 149.070462s, Recall@100: 0.9808
+  ef=3000 Index[M=16, efC=500, efS=3000]IndexTime: 1.196367s, SearchTime: 270.092829s, TotalTime: 272.178998s, Recall@100: 0.9890
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.7158  0.230   12.7     2762      592
+  FAISS fixed(ef=125)                 0.7512  0.270   16.5     3351      699
+  FAISS fixed(ef=150)                 0.7781  0.320   20.3     3935      739
+  FAISS fixed(ef=175)                 0.7996  0.360   23.5     4519      851
+  FAISS fixed(ef=200)                 0.8174  0.400   26.6     5098      961
+  FAISS fixed(ef=250)                 0.8441  0.450   31.5     6245     1195
+  FAISS fixed(ef=300)                 0.8647  0.500   35.7     7386     1436
+  FAISS fixed(ef=350)                 0.8804  0.530   39.4     8515     1809
+  FAISS fixed(ef=400)                 0.8927  0.560   42.9     9633     1946
+  FAISS fixed(ef=500)                 0.9118  0.610   49.2    11843     2482
+  FAISS fixed(ef=600)                 0.9251  0.650   54.6    14017     3059
+  FAISS fixed(ef=700)                 0.9357  0.680   59.4    16163     3648
+  FAISS fixed(ef=800)                 0.9438  0.710   63.5    18280     4322
+  FAISS fixed(ef=1000)                0.9557  0.750   70.3    22441     5651
+  FAISS fixed(ef=1250)                0.9655  0.790   77.2    27519     7628
+  FAISS fixed(ef=1500)                0.9723  0.820   82.4    32484     9639
+  FAISS fixed(ef=2000)                0.9808  0.860   89.5    42118    14616
+  FAISS fixed(ef=3000)                0.9890  0.910   95.9    60458    26924
+  DARTH (FAISS)                       0.9736  0.870   85.8    31416    14484    +6.7%    -41.9%   +0.044
+
+  Same queries, HNSWlib (results_unified_msturing_20260929_024323), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9523  0.700   70.2    31847     6124    +0.1%     -1.2%   -0.041
+  Ada-ef (WAE floor)                  0.9622  0.780   75.6    38070     7224    +3.2%     +2.8%   -0.001
+  Ours (K=1, Isotonic)                0.9496  0.740   66.3    29650     5696    +1.9%     +0.9%   +0.010
+
+  wrote /home/user/percef-release/results_darth_msturing_20261006_091841/summary.json
+== done: /home/user/percef-release/results_darth_msturing_20261006_091841

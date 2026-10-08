@@ -1,0 +1,84 @@
+  exporting CUSTOM_SIFT128: 1000000 x 128 -> darth_data/CUSTOM_SIFT128
+    train: 1500 queries, top-100
+    validation: 500 queries, top-100
+    test: 8000 queries, top-100
+  done: darth_data/CUSTOM_SIFT128
+== sift128 (CUSTOM_SIFT128): k=100 train=1500 val=500 test=8000 efSearch<=2000 target=0.95
+== building FAISS HNSW index
+>>Index saved to /home/user/percef-release/darth_data/CUSTOM_SIFT128/faiss_M16_efC500.index
+>>Index build time: 394.505s
+Index[M=16, efC=500, efS=2000]IndexTime: 394.505192s, SearchTime: 0.013593s, TotalTime: 395.093598s, Recall@100: 1.0000
+== training traces (1500 queries, every 10 distance computations)
+== training the predictor
+
+trained on 3166023 rows / 1500 queries in 5.6s; D = 2116
+== tuning prediction intervals on 500 validation queries (D = 2115.6666666666665)
+  ipi   2116 mpi   2116: recall 0.9848, dists 3394
+  ipi   2116 mpi   1058: recall 0.9791, dists 2968
+  ipi   2116 mpi    529: recall 0.9753, dists 2789
+  ipi   2116 mpi    264: recall 0.9736, dists 2708
+  ipi   2116 mpi    212: recall 0.9725, dists 2688
+  ipi   2116 mpi    132: recall 0.9720, dists 2667
+  ipi   2116 mpi    106: recall 0.9716, dists 2658
+  ipi   1058 mpi   1058: recall 0.9771, dists 2804
+  ipi   1058 mpi    529: recall 0.9716, dists 2541
+  ipi   1058 mpi    264: recall 0.9674, dists 2425
+  ipi   1058 mpi    212: recall 0.9665, dists 2403
+  ipi   1058 mpi    132: recall 0.9648, dists 2366
+  ipi   1058 mpi    106: recall 0.9644, dists 2351
+  ipi    529 mpi    529: recall 0.9705, dists 2528
+  ipi    529 mpi    264: recall 0.9651, dists 2386
+  ipi    529 mpi    212: recall 0.9642, dists 2362
+  ipi    529 mpi    132: recall 0.9625, dists 2322
+  ipi    529 mpi    106: recall 0.9615, dists 2307
+  ipi    264 mpi    264: recall 0.9648, dists 2386
+  ipi    264 mpi    212: recall 0.9648, dists 2364
+  ipi    264 mpi    132: recall 0.9621, dists 2318
+  ipi    264 mpi    106: recall 0.9614, dists 2306
+chosen ipi 264 mpi 106 (validation recall 0.9614)
+== DARTH test: 8000 queries, ipi=264 mpi=106
+Index[M=16, efC=500, efS=2000]IndexTime: 0.661508s, SearchTime: 9.138425s, TotalTime: 10.365418s, Recall@100: 0.9604
+== FAISS fixed-ef grid on the same test queries
+  ef=100 Index[M=16, efC=500, efS=100]IndexTime: 0.667571s, SearchTime: 4.260143s, TotalTime: 5.530524s, Recall@100: 0.9393
+  ef=125 Index[M=16, efC=500, efS=125]IndexTime: 0.653411s, SearchTime: 4.280001s, TotalTime: 5.536031s, Recall@100: 0.9597
+  ef=150 Index[M=16, efC=500, efS=150]IndexTime: 0.653889s, SearchTime: 4.955953s, TotalTime: 6.209333s, Recall@100: 0.9718
+  ef=175 Index[M=16, efC=500, efS=175]IndexTime: 0.656311s, SearchTime: 5.602043s, TotalTime: 6.861669s, Recall@100: 0.9797
+  ef=200 Index[M=16, efC=500, efS=200]IndexTime: 0.657222s, SearchTime: 6.271609s, TotalTime: 7.526917s, Recall@100: 0.9850
+  ef=250 Index[M=16, efC=500, efS=250]IndexTime: 0.706375s, SearchTime: 8.600758s, TotalTime: 9.950169s, Recall@100: 0.9912
+  ef=300 Index[M=16, efC=500, efS=300]IndexTime: 0.706207s, SearchTime: 10.008313s, TotalTime: 11.358423s, Recall@100: 0.9944
+  ef=350 Index[M=16, efC=500, efS=350]IndexTime: 0.711330s, SearchTime: 11.469894s, TotalTime: 12.826317s, Recall@100: 0.9963
+  ef=400 Index[M=16, efC=500, efS=400]IndexTime: 0.709930s, SearchTime: 12.986624s, TotalTime: 14.342170s, Recall@100: 0.9974
+  ef=500 Index[M=16, efC=500, efS=500]IndexTime: 0.709666s, SearchTime: 16.107820s, TotalTime: 17.464393s, Recall@100: 0.9986
+  ef=600 Index[M=16, efC=500, efS=600]IndexTime: 0.709049s, SearchTime: 19.454521s, TotalTime: 20.809576s, Recall@100: 0.9992
+  ef=700 Index[M=16, efC=500, efS=700]IndexTime: 0.711123s, SearchTime: 23.084737s, TotalTime: 24.442574s, Recall@100: 0.9995
+  ef=800 Index[M=16, efC=500, efS=800]IndexTime: 0.709444s, SearchTime: 26.880485s, TotalTime: 28.235480s, Recall@100: 0.9996
+  ef=1000 Index[M=16, efC=500, efS=1000]IndexTime: 0.710549s, SearchTime: 35.252014s, TotalTime: 36.609535s, Recall@100: 0.9998
+  ef=1250 Index[M=16, efC=500, efS=1250]IndexTime: 0.713920s, SearchTime: 46.978472s, TotalTime: 48.338656s, Recall@100: 0.9998
+  ef=1500 Index[M=16, efC=500, efS=1500]IndexTime: 0.711784s, SearchTime: 60.553461s, TotalTime: 61.910526s, Recall@100: 0.9999
+  ef=2000 Index[M=16, efC=500, efS=2000]IndexTime: 0.660196s, SearchTime: 92.337246s, TotalTime: 93.607965s, Recall@100: 0.9999
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.9393  0.760   55.8     1902      462
+  FAISS fixed(ef=125)                 0.9597  0.820   72.1     2298      469
+  FAISS fixed(ef=150)                 0.9718  0.860   83.2     2681      553
+  FAISS fixed(ef=175)                 0.9797  0.880   89.7     3053      633
+  FAISS fixed(ef=200)                 0.9850  0.900   93.8     3414      717
+  FAISS fixed(ef=250)                 0.9912  0.930   97.8     4111     1004
+  FAISS fixed(ef=300)                 0.9944  0.950   99.2     4779     1178
+  FAISS fixed(ef=350)                 0.9963  0.960   99.7     5422     1360
+  FAISS fixed(ef=400)                 0.9974  0.970   99.9     6045     1548
+  FAISS fixed(ef=500)                 0.9986  0.980  100.0     7238     1934
+  FAISS fixed(ef=600)                 0.9992  0.980  100.0     8374     2351
+  FAISS fixed(ef=700)                 0.9995  0.990  100.0     9464     2804
+  FAISS fixed(ef=800)                 0.9996  0.990  100.0    10513     3277
+  FAISS fixed(ef=1000)                0.9998  0.990  100.0    12511     4322
+  FAISS fixed(ef=1250)                0.9998  0.990  100.0    14859     5787
+  FAISS fixed(ef=1500)                0.9999  0.990  100.0    17078     7484
+  FAISS fixed(ef=2000)                0.9999  0.990  100.0    21214    11455
+  DARTH (FAISS)                       0.9604  0.870   74.3     2380     1069    -2.8%   -126.1%   +0.048
+
+  Same queries, HNSWlib, setting R (each against its own library's fixed ef):
+Traceback (most recent call last):
+  File "/home/user/percef-release/darth/darth_summarize.py", line 78, in <module>
+    for n, c in s["scorecard_vs_fixed"].items():
+KeyError: 'scorecard_vs_fixed'

@@ -1,0 +1,11 @@
+  exporting CUSTOM_GLOVE100: 1183514 x 100 -> darth_data/CUSTOM_GLOVE100
+    train: 1500 queries, top-100
+    validation: 500 queries, top-100
+    test: 8000 queries, top-100
+  done: darth_data/CUSTOM_GLOVE100
+== glove100 (CUSTOM_GLOVE100): k=100 train=1500 val=500 test=8000 efSearch<=2000 target=0.95
+== building FAISS HNSW index
+>>Index saved to /home/user/percef-release/darth_data/CUSTOM_GLOVE100/faiss_M16_efC500.index
+>>Index build time: 958.864s
+Index[M=16, efC=500, efS=2000]IndexTime: 958.864423s, SearchTime: 0.016673s, TotalTime: 959.483271s, Recall@100: 0.7700
+== training traces (1500 queries, every 10 distance computations)
