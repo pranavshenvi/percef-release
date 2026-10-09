@@ -1,0 +1,80 @@
+== LAET on sift128 (CUSTOM_SIFT128), reusing /home/user/percef-release/results_darth_sift128_20261006_083659: k=100 train=1500 val=500 test=8000
+== training and tuning LAET (F in D x {1/8,1/4,1/2}, D = 2115.6666666666665; multiplier by bisection on 500 validation queries)
+LAET F=260: trained on 1500 queries (0 ended before F) in 0.4s; median target 3645 distance computations
+  F    260: m 0.500 -> validation recall 0.9505, dists 2246
+LAET F=530: trained on 1500 queries (0 ended before F) in 0.4s; median target 3645 distance computations
+  F    530: m 0.500 -> validation recall 0.9531, dists 2254
+LAET F=1060: trained on 1500 queries (0 ended before F) in 0.4s; median target 3645 distance computations
+  F   1060: m 0.500 -> validation recall 0.9586, dists 2311
+chosen F 260 m 0.500 (validation recall 0.9505)
+== LAET test: 8000 queries, F=260 multiplier=0.5
+Index[M=16, efC=500, efS=2000]IndexTime: 0.645377s, SearchTime: 6.319097s, TotalTime: 7.662942s, Recall@100: 0.9485
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.9393  0.760   55.8     1902      462
+  FAISS fixed(ef=125)                 0.9597  0.820   72.1     2298      469
+  FAISS fixed(ef=150)                 0.9718  0.860   83.2     2681      553
+  FAISS fixed(ef=175)                 0.9797  0.880   89.7     3053      633
+  FAISS fixed(ef=200)                 0.9850  0.900   93.8     3414      717
+  FAISS fixed(ef=250)                 0.9912  0.930   97.8     4111     1004
+  FAISS fixed(ef=300)                 0.9944  0.950   99.2     4779     1178
+  FAISS fixed(ef=350)                 0.9963  0.960   99.7     5422     1360
+  FAISS fixed(ef=400)                 0.9974  0.970   99.9     6045     1548
+  FAISS fixed(ef=500)                 0.9986  0.980  100.0     7238     1934
+  FAISS fixed(ef=600)                 0.9992  0.980  100.0     8374     2351
+  FAISS fixed(ef=700)                 0.9995  0.990  100.0     9464     2804
+  FAISS fixed(ef=800)                 0.9996  0.990  100.0    10513     3277
+  FAISS fixed(ef=1000)                0.9998  0.990  100.0    12511     4322
+  FAISS fixed(ef=1250)                0.9998  0.990  100.0    14859     5787
+  FAISS fixed(ef=1500)                0.9999  0.990  100.0    17078     7484
+  FAISS fixed(ef=2000)                0.9999  0.990  100.0    21214    11455
+  DARTH (FAISS)                       0.9604  0.870   74.3     2380     1069    -2.8%   -126.1%   +0.048
+  LAET (FAISS)                        0.9485  0.800   62.3     2323      726   -13.2%    -56.2%   +0.016
+
+  Same queries, HNSWlib (results_unified_sift128_20261006_224423), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9631  0.810   75.5     3658      549    -0.2%    -25.2%   -0.000
+  Ada-ef (WAE floor)                  0.9632  0.820   75.5     3659      549    -0.1%    -25.2%   +0.010
+  Ours (K=1, Isotonic)                0.9639  0.840   75.6     3593      441    +2.7%     +0.4%   +0.028
+
+  wrote /home/user/percef-release/results_darth_sift128_20261006_083659/summary.json
+== done: /home/user/percef-release/results_darth_sift128_20261006_083659
+== LAET on sift128 (CUSTOM_SIFT128), reusing /home/user/percef-release/results_darth_sift128_20261006_083659: k=100 train=1500 val=500 test=8000
+== training and tuning LAET (F in D x {1/8,1/4,1/2}, D = 2115.6666666666665; multiplier by bisection on 500 validation queries)
+LAET F=260: trained on 1500 queries (0 ended before F) in 0.4s; median target 3645 distance computations
+  F    260: m 0.497 -> validation recall 0.9502, dists 2234
+LAET F=530: trained on 1500 queries (0 ended before F) in 0.4s; median target 3645 distance computations
+  F    530: m 0.487 -> validation recall 0.9500, dists 2194
+LAET F=1060: trained on 1500 queries (0 ended before F) in 0.4s; median target 3645 distance computations
+  F   1060: m 0.459 -> validation recall 0.9500, dists 2134
+chosen F 1060 m 0.459 (validation recall 0.9500)
+== LAET test: 8000 queries, F=1060 multiplier=0.4585020216023356
+Index[M=16, efC=500, efS=2000]IndexTime: 0.764247s, SearchTime: 7.211609s, TotalTime: 8.725963s, Recall@100: 0.9466
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.9393  0.760   55.8     1902      462
+  FAISS fixed(ef=125)                 0.9597  0.820   72.1     2298      469
+  FAISS fixed(ef=150)                 0.9718  0.860   83.2     2681      553
+  FAISS fixed(ef=175)                 0.9797  0.880   89.7     3053      633
+  FAISS fixed(ef=200)                 0.9850  0.900   93.8     3414      717
+  FAISS fixed(ef=250)                 0.9912  0.930   97.8     4111     1004
+  FAISS fixed(ef=300)                 0.9944  0.950   99.2     4779     1178
+  FAISS fixed(ef=350)                 0.9963  0.960   99.7     5422     1360
+  FAISS fixed(ef=400)                 0.9974  0.970   99.9     6045     1548
+  FAISS fixed(ef=500)                 0.9986  0.980  100.0     7238     1934
+  FAISS fixed(ef=600)                 0.9992  0.980  100.0     8374     2351
+  FAISS fixed(ef=700)                 0.9995  0.990  100.0     9464     2804
+  FAISS fixed(ef=800)                 0.9996  0.990  100.0    10513     3277
+  FAISS fixed(ef=1000)                0.9998  0.990  100.0    12511     4322
+  FAISS fixed(ef=1250)                0.9998  0.990  100.0    14859     5787
+  FAISS fixed(ef=1500)                0.9999  0.990  100.0    17078     7484
+  FAISS fixed(ef=2000)                0.9999  0.990  100.0    21214    11455
+  DARTH (FAISS)                       0.9604  0.870   74.3     2380     1069    -2.8%   -126.1%   +0.048
+  LAET (FAISS)                        0.9466  0.810   59.1     2182      826    -8.1%    -78.2%   +0.031
+
+  Same queries, HNSWlib (results_unified_sift128_20261006_224423), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9631  0.810   75.5     3658      549    -0.2%    -25.2%   -0.000
+  Ada-ef (WAE floor)                  0.9632  0.820   75.5     3659      549    -0.1%    -25.2%   +0.010
+  Ours (K=1, Isotonic)                0.9639  0.840   75.6     3593      441    +2.7%     +0.4%   +0.028
+
+  wrote /home/user/percef-release/results_darth_sift128_20261006_083659/summary.json
+== done: /home/user/percef-release/results_darth_sift128_20261006_083659

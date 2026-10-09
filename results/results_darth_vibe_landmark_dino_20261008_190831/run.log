@@ -1,0 +1,86 @@
+  exporting CUSTOM_VIBE_LANDMARK_DINO: 760757 x 768 -> darth_data/CUSTOM_VIBE_LANDMARK_DINO
+    train: 225 queries, top-100
+    validation: 75 queries, top-100
+    test: 700 queries, top-100
+  done: darth_data/CUSTOM_VIBE_LANDMARK_DINO
+== vibe_landmark_dino (CUSTOM_VIBE_LANDMARK_DINO): k=100 train=225 val=75 test=700 efSearch<=2000 target=0.95
+== building FAISS HNSW index
+>>Index saved to /home/user/percef-release/darth_data/CUSTOM_VIBE_LANDMARK_DINO/faiss_M16_efC500.index
+>>Index build time: 1088.379s
+Index[M=16, efC=500, efS=2000]IndexTime: 1088.379272s, SearchTime: 0.018683s, TotalTime: 1090.970429s, Recall@100: 1.0000
+== training traces (225 queries, every 10 distance computations)
+== training the predictor
+
+trained on 412408 rows / 225 queries in 1.0s; D = 2161
+== tuning prediction intervals on 75 validation queries (D = 2161.2444444444445)
+  ipi   2161 mpi   2161: recall 0.9843, dists 3025
+  ipi   2161 mpi   1081: recall 0.9804, dists 2787
+  ipi   2161 mpi    540: recall 0.9788, dists 2678
+  ipi   2161 mpi    270: recall 0.9763, dists 2601
+  ipi   2161 mpi    216: recall 0.9767, dists 2595
+  ipi   2161 mpi    135: recall 0.9751, dists 2579
+  ipi   2161 mpi    108: recall 0.9748, dists 2579
+  ipi   1081 mpi   1081: recall 0.9753, dists 2580
+  ipi   1081 mpi    540: recall 0.9705, dists 2334
+  ipi   1081 mpi    270: recall 0.9661, dists 2191
+  ipi   1081 mpi    216: recall 0.9649, dists 2167
+  ipi   1081 mpi    135: recall 0.9623, dists 2142
+  ipi   1081 mpi    108: recall 0.9625, dists 2135
+  ipi    540 mpi    540: recall 0.9712, dists 2318
+  ipi    540 mpi    270: recall 0.9663, dists 2194
+  ipi    540 mpi    216: recall 0.9635, dists 2156
+  ipi    540 mpi    135: recall 0.9608, dists 2118
+  ipi    540 mpi    108: recall 0.9596, dists 2105
+  ipi    270 mpi    270: recall 0.9665, dists 2192
+  ipi    270 mpi    216: recall 0.9632, dists 2147
+  ipi    270 mpi    135: recall 0.9608, dists 2110
+  ipi    270 mpi    108: recall 0.9595, dists 2098
+chosen ipi 270 mpi 108 (validation recall 0.9595)
+== DARTH test: 700 queries, ipi=270 mpi=108
+Index[M=16, efC=500, efS=2000]IndexTime: 2.748859s, SearchTime: 2.238796s, TotalTime: 7.358765s, Recall@100: 0.9660
+== FAISS fixed-ef grid on the same test queries
+  ef=100 Index[M=16, efC=500, efS=100]IndexTime: 2.246170s, SearchTime: 0.643070s, TotalTime: 5.164259s, Recall@100: 0.9393
+  ef=125 Index[M=16, efC=500, efS=125]IndexTime: 2.178916s, SearchTime: 0.751301s, TotalTime: 5.053683s, Recall@100: 0.9572
+  ef=150 Index[M=16, efC=500, efS=150]IndexTime: 2.174460s, SearchTime: 0.863166s, TotalTime: 5.166534s, Recall@100: 0.9686
+  ef=175 Index[M=16, efC=500, efS=175]IndexTime: 2.182734s, SearchTime: 0.996767s, TotalTime: 5.320572s, Recall@100: 0.9760
+  ef=200 Index[M=16, efC=500, efS=200]IndexTime: 2.189762s, SearchTime: 1.084008s, TotalTime: 5.392243s, Recall@100: 0.9807
+  ef=250 Index[M=16, efC=500, efS=250]IndexTime: 2.192173s, SearchTime: 1.296945s, TotalTime: 5.611763s, Recall@100: 0.9871
+  ef=300 Index[M=16, efC=500, efS=300]IndexTime: 2.176646s, SearchTime: 1.525120s, TotalTime: 5.838347s, Recall@100: 0.9908
+  ef=350 Index[M=16, efC=500, efS=350]IndexTime: 2.189084s, SearchTime: 1.725583s, TotalTime: 6.039435s, Recall@100: 0.9934
+  ef=400 Index[M=16, efC=500, efS=400]IndexTime: 2.191193s, SearchTime: 1.938164s, TotalTime: 6.250054s, Recall@100: 0.9949
+  ef=500 Index[M=16, efC=500, efS=500]IndexTime: 2.187052s, SearchTime: 2.390693s, TotalTime: 6.706935s, Recall@100: 0.9970
+  ef=600 Index[M=16, efC=500, efS=600]IndexTime: 2.194780s, SearchTime: 2.851614s, TotalTime: 7.175990s, Recall@100: 0.9978
+  ef=700 Index[M=16, efC=500, efS=700]IndexTime: 2.774680s, SearchTime: 4.785164s, TotalTime: 10.004340s, Recall@100: 0.9985
+  ef=800 Index[M=16, efC=500, efS=800]IndexTime: 2.182533s, SearchTime: 3.779208s, TotalTime: 8.081527s, Recall@100: 0.9989
+  ef=1000 Index[M=16, efC=500, efS=1000]IndexTime: 2.178463s, SearchTime: 4.803848s, TotalTime: 9.112471s, Recall@100: 0.9993
+  ef=1250 Index[M=16, efC=500, efS=1250]IndexTime: 2.190387s, SearchTime: 6.167879s, TotalTime: 10.482023s, Recall@100: 0.9996
+  ef=1500 Index[M=16, efC=500, efS=1500]IndexTime: 2.748004s, SearchTime: 9.327000s, TotalTime: 14.520052s, Recall@100: 0.9998
+  ef=2000 Index[M=16, efC=500, efS=2000]IndexTime: 2.756197s, SearchTime: 12.342052s, TotalTime: 17.479002s, Recall@100: 0.9999
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.9393  0.710   61.3     1782      785
+  FAISS fixed(ef=125)                 0.9572  0.760   72.9     2135      969
+  FAISS fixed(ef=150)                 0.9686  0.790   81.9     2474     1126
+  FAISS fixed(ef=175)                 0.9760  0.820   87.3     2798     1290
+  FAISS fixed(ef=200)                 0.9807  0.840   89.4     3113     1439
+  FAISS fixed(ef=250)                 0.9871  0.880   93.3     3716     1743
+  FAISS fixed(ef=300)                 0.9908  0.900   95.4     4292     2069
+  FAISS fixed(ef=350)                 0.9934  0.920   97.4     4845     2355
+  FAISS fixed(ef=400)                 0.9949  0.930   98.3     5379     2658
+  FAISS fixed(ef=500)                 0.9970  0.950   99.6     6395     3304
+  FAISS fixed(ef=600)                 0.9978  0.960   99.9     7364     3962
+  FAISS fixed(ef=700)                 0.9985  0.970  100.0     8293     6687
+  FAISS fixed(ef=800)                 0.9989  0.980  100.0     9192     5255
+  FAISS fixed(ef=1000)                0.9993  0.980  100.0    10909     6725
+  FAISS fixed(ef=1250)                0.9996  0.990  100.0    12937     8699
+  FAISS fixed(ef=1500)                0.9998  0.990  100.0    14859    13182
+  FAISS fixed(ef=2000)                0.9999  0.990  100.0    18496    17501
+  DARTH (FAISS)                       0.9660  0.860   78.1     2669     3028   -12.0%   -179.2%   +0.078
+
+  Same queries, HNSWlib (results_unified_vibe_landmark_dino_20261006_232243), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9547  0.760   71.6     3362     1281    -6.2%    -36.5%   -0.001
+  Ada-ef (WAE floor)                  0.9682  0.800   80.9     3946     1430    -1.6%    -27.9%   -0.001
+  Ours (K=1, Isotonic)                0.9681  0.840   79.9     3725     1097    +4.0%     +1.8%   +0.039
+
+  wrote /home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831/summary.json
+== done: /home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831

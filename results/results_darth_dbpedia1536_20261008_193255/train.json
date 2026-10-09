@@ -1,0 +1,8 @@
+{
+ "rows": 3805007,
+ "queries": 1500,
+ "train_s": 6.35,
+ "D": 2576.5133333333333,
+ "reached_share": 1.0,
+ "model": "/home/user/percef-release/results_darth_dbpedia1536_20261008_193255/model.txt"
+}

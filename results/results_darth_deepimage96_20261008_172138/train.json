@@ -1,0 +1,8 @@
+{
+ "rows": 4091924,
+ "queries": 1500,
+ "train_s": 7.65,
+ "D": 4535.438,
+ "reached_share": 0.9986666666666667,
+ "model": "/home/user/percef-release/results_darth_deepimage96_20261008_172138/model.txt"
+}

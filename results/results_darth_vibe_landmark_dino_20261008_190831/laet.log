@@ -1,0 +1,80 @@
+== LAET on vibe_landmark_dino (CUSTOM_VIBE_LANDMARK_DINO), reusing /home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831: k=100 train=225 val=75 test=700
+== training and tuning LAET (F in D x {1/8,1/4,1/2}, D = 2161.2444444444445; multiplier by bisection on 75 validation queries)
+LAET F=270: trained on 225 queries (0 ended before F) in 0.2s; median target 3060 distance computations
+  F    270: m 0.500 -> validation recall 0.9511, dists 2227
+LAET F=540: trained on 225 queries (0 ended before F) in 0.2s; median target 3060 distance computations
+  F    540: m 0.500 -> validation recall 0.9601, dists 2229
+LAET F=1080: trained on 225 queries (0 ended before F) in 0.2s; median target 3060 distance computations
+  F   1080: m 0.500 -> validation recall 0.9657, dists 2311
+chosen F 270 m 0.500 (validation recall 0.9511)
+== LAET test: 700 queries, F=270 multiplier=0.5
+Index[M=16, efC=500, efS=2000]IndexTime: 2.748944s, SearchTime: 1.822998s, TotalTime: 6.928988s, Recall@100: 0.9540
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.9393  0.710   61.3     1782      785
+  FAISS fixed(ef=125)                 0.9572  0.760   72.9     2135      969
+  FAISS fixed(ef=150)                 0.9686  0.790   81.9     2474     1126
+  FAISS fixed(ef=175)                 0.9760  0.820   87.3     2798     1290
+  FAISS fixed(ef=200)                 0.9807  0.840   89.4     3113     1439
+  FAISS fixed(ef=250)                 0.9871  0.880   93.3     3716     1743
+  FAISS fixed(ef=300)                 0.9908  0.900   95.4     4292     2069
+  FAISS fixed(ef=350)                 0.9934  0.920   97.4     4845     2355
+  FAISS fixed(ef=400)                 0.9949  0.930   98.3     5379     2658
+  FAISS fixed(ef=500)                 0.9970  0.950   99.6     6395     3304
+  FAISS fixed(ef=600)                 0.9978  0.960   99.9     7364     3962
+  FAISS fixed(ef=700)                 0.9985  0.970  100.0     8293     6687
+  FAISS fixed(ef=800)                 0.9989  0.980  100.0     9192     5255
+  FAISS fixed(ef=1000)                0.9993  0.980  100.0    10909     6725
+  FAISS fixed(ef=1250)                0.9996  0.990  100.0    12937     8699
+  FAISS fixed(ef=1500)                0.9998  0.990  100.0    14859    13182
+  FAISS fixed(ef=2000)                0.9999  0.990  100.0    18496    17501
+  DARTH (FAISS)                       0.9660  0.860   78.1     2669     3028   -12.0%   -179.2%   +0.078
+  LAET (FAISS)                        0.9540  0.750   70.6     2481     2443   -20.6%   -163.4%   +0.000
+
+  Same queries, HNSWlib (results_unified_vibe_landmark_dino_20261006_232243), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9547  0.760   71.6     3362     1281    -6.2%    -36.5%   -0.001
+  Ada-ef (WAE floor)                  0.9682  0.800   80.9     3946     1430    -1.6%    -27.9%   -0.001
+  Ours (K=1, Isotonic)                0.9681  0.840   79.9     3725     1097    +4.0%     +1.8%   +0.039
+
+  wrote /home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831/summary.json
+== done: /home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831
+== LAET on vibe_landmark_dino (CUSTOM_VIBE_LANDMARK_DINO), reusing /home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831: k=100 train=225 val=75 test=700
+== training and tuning LAET (F in D x {1/8,1/4,1/2}, D = 2161.2444444444445; multiplier by bisection on 75 validation queries)
+LAET F=270: trained on 225 queries (0 ended before F) in 0.2s; median target 3060 distance computations
+  F    270: m 0.495 -> validation recall 0.9504, dists 2203
+LAET F=540: trained on 225 queries (0 ended before F) in 0.2s; median target 3060 distance computations
+  F    540: m 0.451 -> validation recall 0.9505, dists 2013
+LAET F=1080: trained on 225 queries (0 ended before F) in 0.2s; median target 3060 distance computations
+  F   1080: m 0.407 -> validation recall 0.9500, dists 1916
+chosen F 1080 m 0.407 (validation recall 0.9500)
+== LAET test: 700 queries, F=1080 multiplier=0.407006855464337
+Index[M=16, efC=500, efS=2000]IndexTime: 3.009195s, SearchTime: 1.620563s, TotalTime: 7.134985s, Recall@100: 0.9455
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.9393  0.710   61.3     1782      785
+  FAISS fixed(ef=125)                 0.9572  0.760   72.9     2135      969
+  FAISS fixed(ef=150)                 0.9686  0.790   81.9     2474     1126
+  FAISS fixed(ef=175)                 0.9760  0.820   87.3     2798     1290
+  FAISS fixed(ef=200)                 0.9807  0.840   89.4     3113     1439
+  FAISS fixed(ef=250)                 0.9871  0.880   93.3     3716     1743
+  FAISS fixed(ef=300)                 0.9908  0.900   95.4     4292     2069
+  FAISS fixed(ef=350)                 0.9934  0.920   97.4     4845     2355
+  FAISS fixed(ef=400)                 0.9949  0.930   98.3     5379     2658
+  FAISS fixed(ef=500)                 0.9970  0.950   99.6     6395     3304
+  FAISS fixed(ef=600)                 0.9978  0.960   99.9     7364     3962
+  FAISS fixed(ef=700)                 0.9985  0.970  100.0     8293     6687
+  FAISS fixed(ef=800)                 0.9989  0.980  100.0     9192     5255
+  FAISS fixed(ef=1000)                0.9993  0.980  100.0    10909     6725
+  FAISS fixed(ef=1250)                0.9996  0.990  100.0    12937     8699
+  FAISS fixed(ef=1500)                0.9998  0.990  100.0    14859    13182
+  FAISS fixed(ef=2000)                0.9999  0.990  100.0    18496    17501
+  DARTH (FAISS)                       0.9660  0.860   78.1     2669     3028   -12.0%   -179.2%   +0.078
+  LAET (FAISS)                        0.9455  0.760   62.1     2101     2152   -11.5%   -156.9%   +0.034
+
+  Same queries, HNSWlib (results_unified_vibe_landmark_dino_20261006_232243), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9547  0.760   71.6     3362     1281    -6.2%    -36.5%   -0.001
+  Ada-ef (WAE floor)                  0.9682  0.800   80.9     3946     1430    -1.6%    -27.9%   -0.001
+  Ours (K=1, Isotonic)                0.9681  0.840   79.9     3725     1097    +4.0%     +1.8%   +0.039
+
+  wrote /home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831/summary.json
+== done: /home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831

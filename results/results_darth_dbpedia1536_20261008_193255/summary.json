@@ -1,0 +1,233 @@
+{
+ "darth": {
+  "name": "DARTH",
+  "mean_r": 0.97374125,
+  "p1": 0.88,
+  "p5": 0.92,
+  "pct_target": 86.225,
+  "total_dc": 4074.6845,
+  "mean_lat_us": 4131.955920375,
+  "scorecard": {
+   "saving_dc_pct": -20.266743607231323,
+   "saving_lat_pct": -62.923796252913576,
+   "p1_gain": 0.066886256869514,
+   "p5_gain": 0.02688625686951407
+  }
+ },
+ "laet": {
+  "name": "LAET",
+  "mean_r": 0.9535725,
+  "p1": 0.81,
+  "p5": 0.87,
+  "pct_target": 67.16250000000001,
+  "total_dc": 2659.087625,
+  "mean_lat_us": 2726.92796975,
+  "scorecard": {
+   "saving_dc_pct": -8.350568746333371,
+   "saving_lat_pct": -59.98168751598168,
+   "p1_gain": 0.05690124845293787,
+   "p5_gain": 0.03460083230195854
+  }
+ },
+ "faiss_fixed": [
+  {
+   "name": "FAISS fixed(ef=100)",
+   "mean_r": 0.9382575,
+   "p1": 0.7,
+   "p5": 0.8,
+   "pct_target": 59.9375,
+   "total_dc": 2078.527125,
+   "mean_lat_us": 1382.8826188750002,
+   "avg_ef": 100
+  },
+  {
+   "name": "FAISS fixed(ef=125)",
+   "mean_r": 0.9552612500000001,
+   "p1": 0.76,
+   "p5": 0.84,
+   "pct_target": 71.98750000000001,
+   "total_dc": 2507.715375,
+   "mean_lat_us": 1751.4874286250001,
+   "avg_ef": 125
+  },
+  {
+   "name": "FAISS fixed(ef=150)",
+   "mean_r": 0.9659075,
+   "p1": 0.79,
+   "p5": 0.87,
+   "pct_target": 79.375,
+   "total_dc": 2924.1555,
+   "mean_lat_us": 2129.2195347499996,
+   "avg_ef": 150
+  },
+  {
+   "name": "FAISS fixed(ef=175)",
+   "mean_r": 0.9728825,
+   "p1": 0.81,
+   "p5": 0.89,
+   "pct_target": 84.2125,
+   "total_dc": 3329.24825,
+   "mean_lat_us": 2488.6144415,
+   "avg_ef": 175
+  },
+  {
+   "name": "FAISS fixed(ef=200)",
+   "mean_r": 0.97794625,
+   "p1": 0.83,
+   "p5": 0.91,
+   "pct_target": 87.675,
+   "total_dc": 3725.430875,
+   "mean_lat_us": 2810.051796375,
+   "avg_ef": 200
+  },
+  {
+   "name": "FAISS fixed(ef=250)",
+   "mean_r": 0.98467875,
+   "p1": 0.87,
+   "p5": 0.93,
+   "pct_target": 92.475,
+   "total_dc": 4493.602125,
+   "mean_lat_us": 3467.1814105000003,
+   "avg_ef": 250
+  },
+  {
+   "name": "FAISS fixed(ef=300)",
+   "mean_r": 0.9885862500000001,
+   "p1": 0.9,
+   "p5": 0.95,
+   "pct_target": 95.35,
+   "total_dc": 5233.09625,
+   "mean_lat_us": 4145.00854,
+   "avg_ef": 300
+  },
+  {
+   "name": "FAISS fixed(ef=350)",
+   "mean_r": 0.9910925,
+   "p1": 0.92,
+   "p5": 0.96,
+   "pct_target": 96.8875,
+   "total_dc": 5952.169625,
+   "mean_lat_us": 4774.876121375,
+   "avg_ef": 350
+  },
+  {
+   "name": "FAISS fixed(ef=400)",
+   "mean_r": 0.99284,
+   "p1": 0.93,
+   "p5": 0.96,
+   "pct_target": 97.82499999999999,
+   "total_dc": 6653.032875,
+   "mean_lat_us": 5453.333615875,
+   "avg_ef": 400
+  },
+  {
+   "name": "FAISS fixed(ef=500)",
+   "mean_r": 0.99500625,
+   "p1": 0.94,
+   "p5": 0.97,
+   "pct_target": 98.9375,
+   "total_dc": 8008.926375,
+   "mean_lat_us": 6604.213178375,
+   "avg_ef": 500
+  },
+  {
+   "name": "FAISS fixed(ef=600)",
+   "mean_r": 0.99625,
+   "p1": 0.95,
+   "p5": 0.98,
+   "pct_target": 99.3625,
+   "total_dc": 9317.310625,
+   "mean_lat_us": 7789.911452875,
+   "avg_ef": 600
+  },
+  {
+   "name": "FAISS fixed(ef=700)",
+   "mean_r": 0.99708375,
+   "p1": 0.96,
+   "p5": 0.98,
+   "pct_target": 99.6,
+   "total_dc": 10586.554125,
+   "mean_lat_us": 8618.146689000001,
+   "avg_ef": 700
+  },
+  {
+   "name": "FAISS fixed(ef=800)",
+   "mean_r": 0.997675,
+   "p1": 0.97,
+   "p5": 0.99,
+   "pct_target": 99.7625,
+   "total_dc": 11824.490875,
+   "mean_lat_us": 10040.080726875,
+   "avg_ef": 800
+  },
+  {
+   "name": "FAISS fixed(ef=1000)",
+   "mean_r": 0.99837125,
+   "p1": 0.98,
+   "p5": 0.99,
+   "pct_target": 99.9,
+   "total_dc": 14223.0605,
+   "mean_lat_us": 12288.916706375,
+   "avg_ef": 1000
+  },
+  {
+   "name": "FAISS fixed(ef=1250)",
+   "mean_r": 0.998835,
+   "p1": 0.98,
+   "p5": 0.99,
+   "pct_target": 99.95,
+   "total_dc": 17107.58875,
+   "mean_lat_us": 15229.715321375,
+   "avg_ef": 1250
+  },
+  {
+   "name": "FAISS fixed(ef=1500)",
+   "mean_r": 0.9991125000000001,
+   "p1": 0.98,
+   "p5": 0.99,
+   "pct_target": 99.9625,
+   "total_dc": 19891.445875,
+   "mean_lat_us": 18701.8558345,
+   "avg_ef": 1500
+  },
+  {
+   "name": "FAISS fixed(ef=2000)",
+   "mean_r": 0.99943625,
+   "p1": 0.99,
+   "p5": 1.0,
+   "pct_target": 99.9875,
+   "total_dc": 25242.985125,
+   "mean_lat_us": 26130.714830875,
+   "avg_ef": 2000
+  }
+ ],
+ "hnswlib_setting_R": {
+  "Ada-ef (as shipped)": {
+   "mean_r": 0.9631225000000001,
+   "p1": 0.79,
+   "pct_target": 76.875,
+   "saving_dc_pct": -0.4522576447516173,
+   "saving_lat_pct": -45.50393958963034,
+   "p1_gain": 0.03290268496381854,
+   "p5_gain": 0.012902684963818523
+  },
+  "Ada-ef (WAE floor)": {
+   "mean_r": 0.9717275,
+   "p1": 0.82,
+   "pct_target": 83.075,
+   "saving_dc_pct": 3.199230303525498,
+   "saving_lat_pct": -32.61120817721499,
+   "p1_gain": 0.02121710929165832,
+   "p5_gain": 0.005608554645829211
+  },
+  "Ours (K=1, Isotonic)": {
+   "mean_r": 0.967095,
+   "p1": 0.81,
+   "pct_target": 80.4,
+   "saving_dc_pct": 5.322906756727966,
+   "saving_lat_pct": 2.0016928506356444,
+   "p1_gain": 0.034118581170504925,
+   "p5_gain": 0.009412387447003234
+  }
+ }
+}

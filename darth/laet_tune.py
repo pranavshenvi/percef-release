@@ -49,6 +49,11 @@ for frac in (1 / 8, 1 / 4, 1 / 2):
     lo, hi = 0.5, 8.0
     r_lo, r_hi = validate(F, lo, model), validate(F, hi, model)
     results += [r_lo, r_hi]
+    while r_lo["recall"] >= a.target and lo > 0.02:   # lower bound still meets the target: widen downwards
+        hi, r_hi = lo, r_lo
+        lo = lo / 2
+        r_lo = validate(F, lo, model)
+        results.append(r_lo)
     if r_lo["recall"] >= a.target:
         best = r_lo
     else:

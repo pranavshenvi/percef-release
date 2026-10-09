@@ -1,0 +1,86 @@
+  exporting CUSTOM_DEEPIMAGE96: 9990000 x 96 -> darth_data/CUSTOM_DEEPIMAGE96
+    train: 1500 queries, top-100
+    validation: 500 queries, top-100
+    test: 8000 queries, top-100
+  done: darth_data/CUSTOM_DEEPIMAGE96
+== deepimage96 (CUSTOM_DEEPIMAGE96): k=100 train=1500 val=500 test=8000 efSearch<=2000 target=0.95
+== building FAISS HNSW index
+>>Index saved to /home/user/percef-release/darth_data/CUSTOM_DEEPIMAGE96/faiss_M16_efC500.index
+>>Index build time: 5087.513s
+Index[M=16, efC=500, efS=2000]IndexTime: 5087.512708s, SearchTime: 0.018075s, TotalTime: 5091.366777s, Recall@100: 1.0000
+== training traces (1500 queries, every 10 distance computations)
+== training the predictor
+
+trained on 4091924 rows / 1500 queries in 7.6s; D = 4535
+== tuning prediction intervals on 500 validation queries (D = 4535.438)
+  ipi   4535 mpi   4535: recall 0.9845, dists 7641
+  ipi   4535 mpi   2268: recall 0.9815, dists 7052
+  ipi   4535 mpi   1134: recall 0.9797, dists 6787
+  ipi   4535 mpi    567: recall 0.9783, dists 6648
+  ipi   4535 mpi    454: recall 0.9783, dists 6634
+  ipi   4535 mpi    283: recall 0.9778, dists 6596
+  ipi   4535 mpi    227: recall 0.9777, dists 6583
+  ipi   2268 mpi   2268: recall 0.9771, dists 6360
+  ipi   2268 mpi   1134: recall 0.9732, dists 5945
+  ipi   2268 mpi    567: recall 0.9706, dists 5722
+  ipi   2268 mpi    454: recall 0.9704, dists 5697
+  ipi   2268 mpi    283: recall 0.9689, dists 5620
+  ipi   2268 mpi    227: recall 0.9690, dists 5610
+  ipi   1134 mpi   1134: recall 0.9706, dists 5800
+  ipi   1134 mpi    567: recall 0.9680, dists 5564
+  ipi   1134 mpi    454: recall 0.9667, dists 5516
+  ipi   1134 mpi    283: recall 0.9650, dists 5430
+  ipi   1134 mpi    227: recall 0.9645, dists 5408
+  ipi    567 mpi    567: recall 0.9669, dists 5540
+  ipi    567 mpi    454: recall 0.9658, dists 5498
+  ipi    567 mpi    283: recall 0.9633, dists 5402
+  ipi    567 mpi    227: recall 0.9626, dists 5376
+chosen ipi 567 mpi 227 (validation recall 0.9626)
+== DARTH test: 8000 queries, ipi=567 mpi=227
+Index[M=16, efC=500, efS=2000]IndexTime: 6.393472s, SearchTime: 18.837881s, TotalTime: 29.650381s, Recall@100: 0.9639
+== FAISS fixed-ef grid on the same test queries
+  ef=100 Index[M=16, efC=500, efS=100]IndexTime: 5.600624s, SearchTime: 4.288586s, TotalTime: 13.689005s, Recall@100: 0.8804
+  ef=125 Index[M=16, efC=500, efS=125]IndexTime: 5.634471s, SearchTime: 5.047740s, TotalTime: 14.500642s, Recall@100: 0.9081
+  ef=150 Index[M=16, efC=500, efS=150]IndexTime: 5.607224s, SearchTime: 5.863767s, TotalTime: 15.278030s, Recall@100: 0.9268
+  ef=175 Index[M=16, efC=500, efS=175]IndexTime: 6.433249s, SearchTime: 6.748155s, TotalTime: 17.616903s, Recall@100: 0.9401
+  ef=200 Index[M=16, efC=500, efS=200]IndexTime: 6.409260s, SearchTime: 7.564761s, TotalTime: 18.395519s, Recall@100: 0.9504
+  ef=250 Index[M=16, efC=500, efS=250]IndexTime: 6.406507s, SearchTime: 9.131423s, TotalTime: 19.961493s, Recall@100: 0.9636
+  ef=300 Index[M=16, efC=500, efS=300]IndexTime: 6.412877s, SearchTime: 10.907031s, TotalTime: 21.749540s, Recall@100: 0.9723
+  ef=350 Index[M=16, efC=500, efS=350]IndexTime: 6.387911s, SearchTime: 12.712940s, TotalTime: 23.513566s, Recall@100: 0.9780
+  ef=400 Index[M=16, efC=500, efS=400]IndexTime: 6.137735s, SearchTime: 14.587024s, TotalTime: 25.163210s, Recall@100: 0.9821
+  ef=500 Index[M=16, efC=500, efS=500]IndexTime: 6.427342s, SearchTime: 18.107083s, TotalTime: 28.955157s, Recall@100: 0.9873
+  ef=600 Index[M=16, efC=500, efS=600]IndexTime: 6.372719s, SearchTime: 22.172821s, TotalTime: 32.970229s, Recall@100: 0.9905
+  ef=700 Index[M=16, efC=500, efS=700]IndexTime: 6.366701s, SearchTime: 26.270550s, TotalTime: 37.059207s, Recall@100: 0.9927
+  ef=800 Index[M=16, efC=500, efS=800]IndexTime: 6.328685s, SearchTime: 30.527576s, TotalTime: 41.274151s, Recall@100: 0.9942
+  ef=1000 Index[M=16, efC=500, efS=1000]IndexTime: 6.392671s, SearchTime: 40.117559s, TotalTime: 50.917645s, Recall@100: 0.9960
+  ef=1250 Index[M=16, efC=500, efS=1250]IndexTime: 6.163130s, SearchTime: 54.172538s, TotalTime: 64.760006s, Recall@100: 0.9972
+  ef=1500 Index[M=16, efC=500, efS=1500]IndexTime: 6.461467s, SearchTime: 68.412135s, TotalTime: 79.295701s, Recall@100: 0.9980
+  ef=2000 Index[M=16, efC=500, efS=2000]IndexTime: 6.387041s, SearchTime: 103.877335s, TotalTime: 114.681309s, Recall@100: 0.9987
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.8804  0.510   36.1     2219      468
+  FAISS fixed(ef=125)                 0.9081  0.570   47.3     2686      559
+  FAISS fixed(ef=150)                 0.9268  0.610   56.1     3141      663
+  FAISS fixed(ef=175)                 0.9402  0.640   63.4     3584      771
+  FAISS fixed(ef=200)                 0.9504  0.680   69.5     4018      872
+  FAISS fixed(ef=250)                 0.9637  0.740   77.9     4860     1067
+  FAISS fixed(ef=300)                 0.9723  0.780   83.9     5673     1287
+  FAISS fixed(ef=350)                 0.9780  0.800   87.9     6463     1510
+  FAISS fixed(ef=400)                 0.9822  0.830   90.5     7231     1740
+  FAISS fixed(ef=500)                 0.9873  0.860   93.8     8718     2177
+  FAISS fixed(ef=600)                 0.9905  0.890   95.8    10148     2686
+  FAISS fixed(ef=700)                 0.9928  0.910   97.2    11533     3196
+  FAISS fixed(ef=800)                 0.9942  0.920   98.0    12878     3724
+  FAISS fixed(ef=1000)                0.9960  0.940   98.8    15470     4924
+  FAISS fixed(ef=1250)                0.9973  0.960   99.4    18563     6680
+  FAISS fixed(ef=1500)                0.9980  0.970   99.6    21527     8457
+  FAISS fixed(ef=2000)                0.9987  0.980   99.9    27156    12892
+  DARTH (FAISS)                       0.9639  0.860   78.0     5388     2268   -10.4%   -111.5%   +0.119
+
+  Same queries, HNSWlib (results_unified_deepimage96_20261006_221747), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9656  0.780   78.3     7851     1000    +1.2%    -11.5%   +0.048
+  Ada-ef (WAE floor)                  0.9714  0.790   82.4     8705     1081    +3.6%     -8.0%   +0.034
+  Ours (K=1, Isotonic)                0.9581  0.790   71.3     6876      844    +0.5%     -7.1%   +0.088
+
+  wrote /home/user/percef-release/results_darth_deepimage96_20261008_172138/summary.json
+== done: /home/user/percef-release/results_darth_deepimage96_20261008_172138

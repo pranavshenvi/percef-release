@@ -1,0 +1,41 @@
+== LAET on msturing (CUSTOM_MSTURING), reusing /home/user/percef-release/results_darth_msturing_20261006_091841: k=100 train=1500 val=500 test=10000
+== training and tuning LAET (F in D x {1/8,1/4,1/2}, D = 18267.450666666668; multiplier by bisection on 500 validation queries)
+LAET F=2280: trained on 1500 queries (0 ended before F) in 0.4s; median target 36230 distance computations
+  F   2280: m 0.522 -> validation recall 0.9509, dists 18497
+LAET F=4570: trained on 1500 queries (0 ended before F) in 0.4s; median target 36230 distance computations
+  F   4570: m 0.522 -> validation recall 0.9505, dists 18276
+LAET F=9130: trained on 1500 queries (0 ended before F) in 0.4s; median target 36230 distance computations
+  F   9130: m 0.511 -> validation recall 0.9505, dists 18457
+chosen F 4570 m 0.522 (validation recall 0.9505)
+== LAET test: 10000 queries, F=4570 multiplier=0.5221368912137069
+Index[M=16, efC=500, efS=2000]IndexTime: 1.219623s, SearchTime: 61.928314s, TotalTime: 64.231739s, Recall@100: 0.9527
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.7158  0.230   12.7     2762      592
+  FAISS fixed(ef=125)                 0.7512  0.270   16.5     3351      699
+  FAISS fixed(ef=150)                 0.7781  0.320   20.3     3935      739
+  FAISS fixed(ef=175)                 0.7996  0.360   23.5     4519      851
+  FAISS fixed(ef=200)                 0.8174  0.400   26.6     5098      961
+  FAISS fixed(ef=250)                 0.8441  0.450   31.5     6245     1195
+  FAISS fixed(ef=300)                 0.8647  0.500   35.7     7386     1436
+  FAISS fixed(ef=350)                 0.8804  0.530   39.4     8515     1809
+  FAISS fixed(ef=400)                 0.8927  0.560   42.9     9633     1946
+  FAISS fixed(ef=500)                 0.9118  0.610   49.2    11843     2482
+  FAISS fixed(ef=600)                 0.9251  0.650   54.6    14017     3059
+  FAISS fixed(ef=700)                 0.9357  0.680   59.4    16163     3648
+  FAISS fixed(ef=800)                 0.9438  0.710   63.5    18280     4322
+  FAISS fixed(ef=1000)                0.9557  0.750   70.3    22441     5651
+  FAISS fixed(ef=1250)                0.9655  0.790   77.2    27519     7628
+  FAISS fixed(ef=1500)                0.9723  0.820   82.4    32484     9639
+  FAISS fixed(ef=2000)                0.9808  0.860   89.5    42118    14616
+  FAISS fixed(ef=3000)                0.9890  0.910   95.9    60458    26924
+  DARTH (FAISS)                       0.9736  0.870   85.8    31416    14484    +6.7%    -41.9%   +0.044
+  LAET (FAISS)                        0.9527  0.790   66.3    17735     6101   +16.4%    -16.2%   +0.051
+
+  Same queries, HNSWlib (results_unified_msturing_20260929_024323), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9523  0.700   70.2    31847     6124    +0.1%     -1.2%   -0.041
+  Ada-ef (WAE floor)                  0.9622  0.780   75.6    38070     7224    +3.2%     +2.8%   -0.001
+  Ours (K=1, Isotonic)                0.9496  0.740   66.3    29650     5696    +1.9%     +0.9%   +0.010
+
+  wrote /home/user/percef-release/results_darth_msturing_20261006_091841/summary.json
+== done: /home/user/percef-release/results_darth_msturing_20261006_091841

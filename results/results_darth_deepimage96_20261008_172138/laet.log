@@ -1,0 +1,80 @@
+== LAET on deepimage96 (CUSTOM_DEEPIMAGE96), reusing /home/user/percef-release/results_darth_deepimage96_20261008_172138: k=100 train=1500 val=500 test=8000
+== training and tuning LAET (F in D x {1/8,1/4,1/2}, D = 4535.438; multiplier by bisection on 500 validation queries)
+LAET F=570: trained on 1499 queries (1 ended before F) in 0.4s; median target 7050 distance computations
+  F    570: m 0.500 -> validation recall 0.9574, dists 5033
+LAET F=1130: trained on 1499 queries (1 ended before F) in 0.5s; median target 7050 distance computations
+  F   1130: m 0.500 -> validation recall 0.9602, dists 5102
+LAET F=2270: trained on 1499 queries (1 ended before F) in 0.4s; median target 7050 distance computations
+  F   2270: m 0.500 -> validation recall 0.9662, dists 5282
+chosen F 570 m 0.500 (validation recall 0.9574)
+== LAET test: 8000 queries, F=570 multiplier=0.5
+Index[M=16, efC=500, efS=2000]IndexTime: 5.876964s, SearchTime: 14.748768s, TotalTime: 24.474430s, Recall@100: 0.9574
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.8804  0.510   36.1     2219      468
+  FAISS fixed(ef=125)                 0.9081  0.570   47.3     2686      559
+  FAISS fixed(ef=150)                 0.9268  0.610   56.1     3141      663
+  FAISS fixed(ef=175)                 0.9402  0.640   63.4     3584      771
+  FAISS fixed(ef=200)                 0.9504  0.680   69.5     4018      872
+  FAISS fixed(ef=250)                 0.9637  0.740   77.9     4860     1067
+  FAISS fixed(ef=300)                 0.9723  0.780   83.9     5673     1287
+  FAISS fixed(ef=350)                 0.9780  0.800   87.9     6463     1510
+  FAISS fixed(ef=400)                 0.9822  0.830   90.5     7231     1740
+  FAISS fixed(ef=500)                 0.9873  0.860   93.8     8718     2177
+  FAISS fixed(ef=600)                 0.9905  0.890   95.8    10148     2686
+  FAISS fixed(ef=700)                 0.9928  0.910   97.2    11533     3196
+  FAISS fixed(ef=800)                 0.9942  0.920   98.0    12878     3724
+  FAISS fixed(ef=1000)                0.9960  0.940   98.8    15470     4924
+  FAISS fixed(ef=1250)                0.9973  0.960   99.4    18563     6680
+  FAISS fixed(ef=1500)                0.9980  0.970   99.6    21527     8457
+  FAISS fixed(ef=2000)                0.9987  0.980   99.9    27156    12892
+  DARTH (FAISS)                       0.9639  0.860   78.0     5388     2268   -10.4%   -111.5%   +0.119
+  LAET (FAISS)                        0.9574  0.790   72.2     5082     1767   -15.3%    -83.7%   +0.081
+
+  Same queries, HNSWlib (results_unified_deepimage96_20261006_221747), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9656  0.780   78.3     7851     1000    +1.2%    -11.5%   +0.048
+  Ada-ef (WAE floor)                  0.9714  0.790   82.4     8705     1081    +3.6%     -8.0%   +0.034
+  Ours (K=1, Isotonic)                0.9581  0.790   71.3     6876      844    +0.5%     -7.1%   +0.088
+
+  wrote /home/user/percef-release/results_darth_deepimage96_20261008_172138/summary.json
+== done: /home/user/percef-release/results_darth_deepimage96_20261008_172138
+== LAET on deepimage96 (CUSTOM_DEEPIMAGE96), reusing /home/user/percef-release/results_darth_deepimage96_20261008_172138: k=100 train=1500 val=500 test=8000
+== training and tuning LAET (F in D x {1/8,1/4,1/2}, D = 4535.438; multiplier by bisection on 500 validation queries)
+LAET F=570: trained on 1499 queries (1 ended before F) in 0.4s; median target 7050 distance computations
+  F    570: m 0.461 -> validation recall 0.9503, dists 4641
+LAET F=1130: trained on 1499 queries (1 ended before F) in 0.5s; median target 7050 distance computations
+  F   1130: m 0.441 -> validation recall 0.9501, dists 4521
+LAET F=2270: trained on 1499 queries (1 ended before F) in 0.4s; median target 7050 distance computations
+  F   2270: m 0.388 -> validation recall 0.9503, dists 4260
+chosen F 2270 m 0.388 (validation recall 0.9503)
+== LAET test: 8000 queries, F=2270 multiplier=0.38764621942125
+Index[M=16, efC=500, efS=2000]IndexTime: 6.855933s, SearchTime: 15.833391s, TotalTime: 27.291068s, Recall@100: 0.9511
+
+  method                               meanR     p1   hit%       DC   lat us  save DC  save lat  p1 gain
+  FAISS fixed(ef=100)                 0.8804  0.510   36.1     2219      468
+  FAISS fixed(ef=125)                 0.9081  0.570   47.3     2686      559
+  FAISS fixed(ef=150)                 0.9268  0.610   56.1     3141      663
+  FAISS fixed(ef=175)                 0.9402  0.640   63.4     3584      771
+  FAISS fixed(ef=200)                 0.9504  0.680   69.5     4018      872
+  FAISS fixed(ef=250)                 0.9637  0.740   77.9     4860     1067
+  FAISS fixed(ef=300)                 0.9723  0.780   83.9     5673     1287
+  FAISS fixed(ef=350)                 0.9780  0.800   87.9     6463     1510
+  FAISS fixed(ef=400)                 0.9822  0.830   90.5     7231     1740
+  FAISS fixed(ef=500)                 0.9873  0.860   93.8     8718     2177
+  FAISS fixed(ef=600)                 0.9905  0.890   95.8    10148     2686
+  FAISS fixed(ef=700)                 0.9928  0.910   97.2    11533     3196
+  FAISS fixed(ef=800)                 0.9942  0.920   98.0    12878     3724
+  FAISS fixed(ef=1000)                0.9960  0.940   98.8    15470     4924
+  FAISS fixed(ef=1250)                0.9973  0.960   99.4    18563     6680
+  FAISS fixed(ef=1500)                0.9980  0.970   99.6    21527     8457
+  FAISS fixed(ef=2000)                0.9987  0.980   99.9    27156    12892
+  DARTH (FAISS)                       0.9639  0.860   78.0     5388     2268   -10.4%   -111.5%   +0.119
+  LAET (FAISS)                        0.9511  0.780   64.3     4253     1891    -5.0%   -114.8%   +0.097
+
+  Same queries, HNSWlib (results_unified_deepimage96_20261006_221747), setting R, each against its own library's fixed ef:
+  Ada-ef (as shipped)                 0.9656  0.780   78.3     7851     1000    +1.2%    -11.5%   +0.048
+  Ada-ef (WAE floor)                  0.9714  0.790   82.4     8705     1081    +3.6%     -8.0%   +0.034
+  Ours (K=1, Isotonic)                0.9581  0.790   71.3     6876      844    +0.5%     -7.1%   +0.088
+
+  wrote /home/user/percef-release/results_darth_deepimage96_20261008_172138/summary.json
+== done: /home/user/percef-release/results_darth_deepimage96_20261008_172138

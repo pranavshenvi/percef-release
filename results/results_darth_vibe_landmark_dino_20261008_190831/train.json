@@ -1,0 +1,8 @@
+{
+ "rows": 412408,
+ "queries": 225,
+ "train_s": 1.01,
+ "D": 2161.2444444444445,
+ "reached_share": 1.0,
+ "model": "/home/user/percef-release/results_darth_vibe_landmark_dino_20261008_190831/model.txt"
+}
