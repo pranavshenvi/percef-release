@@ -119,14 +119,18 @@ ap.add_argument("--fixes", action="store_true",
                 help="also run the two candidate fixes (updateAsOf071026.md §6): the ef table scaled to meet the "
                      "target on the calibration queries, and a shorter probe (--short-probe); own results folder")
 ap.add_argument("--short-probe", type=int, default=30, help="probe length of the shorter-probe variant (--fixes)")
+ap.add_argument("--seed", type=int, default=None,
+                help="seed repeat: another random draw of the R/test split, the P calibration points and the KS "
+                     "sample (default 42); same index; own results folder and caches")
 args = ap.parse_args()
-SWEEP = args.target_recall is not None or args.k is not None or args.fixes
+SWEEP = args.target_recall is not None or args.k is not None or args.fixes or args.seed is not None
 SETTINGS = [s.strip().upper() for s in args.settings.split(",") if s.strip()]
 assert all(s in ("P", "R") for s in SETTINGS), "--settings takes P and/or R"
 
 TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
+SEED_TAG = f"_s{args.seed}" if args.seed is not None else ""
 CACHE_TAG = ((f"_t{args.target_recall:g}" if args.target_recall is not None else "")
-             + (f"_k{args.k}" if args.k is not None else ""))
+             + (f"_k{args.k}" if args.k is not None else "") + SEED_TAG)
 SWEEP_TAG = CACHE_TAG + ("_fixes" if args.fixes else "")
 RESULTS_DIR = (f"results_unified_{args.dataset}{'_smoke' if args.smoke else ''}"
                f"{'_ablation' if (args.ablation or args.group_table) else ''}"
@@ -159,7 +163,7 @@ import chao_hybrid_ada_ef_cpp as hnsw
 # ═══════════════════════════════════════════════════════════════════════
 #  Frozen protocol
 # ═══════════════════════════════════════════════════════════════════════
-SEED = 42
+SEED = 42 if args.seed is None else args.seed
 M, EF_CONSTRUCTION = 16, 500
 TARGET_RECALL = 0.95 if args.target_recall is None else args.target_recall
 EF_CAP = 5000
@@ -260,6 +264,10 @@ def held_out_split(n_total, n_calib, n_test, rng):
 def load_dataset(name):
     """Returns dict: corpus, k, test_q, calib_r, index_path, reuse, tag, notes."""
     import h5py
+    if args.seed is not None and name in ("laion_i2i", "yambda"):
+        # their queries are held out of the corpus (held_out_split): another seed changes the corpus,
+        # and the cached index would contain the new test queries
+        sys.exit(f"--seed is not supported for {name}: its queries are taken from the corpus")
     rng = np.random.default_rng(SEED)
     n_r = N_CALIB_R_FULL
     if name in ("glove100", "deepimage96", "sift128", "dbpedia1536", "gist960", "fashionmnist784"):
@@ -761,7 +769,8 @@ def main():
 
     # 1. statistics, KS pool, P-calibration rows (one streaming pass)
     t0 = time.time()
-    stats_npz, stats_bin = os.path.join(cache, "stats.npz"), os.path.join(cache, "ada_estimator.bin")
+    stats_npz = os.path.join(cache, f"stats{SEED_TAG}.npz")            # P points and KS pool depend on the seed
+    stats_bin = os.path.join(cache, f"ada_estimator{SEED_TAG}.bin")
     if os.path.exists(stats_npz):
         st = np.load(stats_npz)
         mean, cov, n_seen, pool, calib_p, p_ids = st["mean"], st["cov"], int(st["n"]), st["pool"], st["calib_p"], st["p_ids"]
@@ -783,10 +792,10 @@ def main():
 
     # 2. ground truth for test, R-calibration and P-calibration queries (one pass)
     t0 = time.time()
-    gt_path = os.path.join(cache, f"gt_k{K}.npz")
+    gt_path = os.path.join(cache, f"gt_k{K}{SEED_TAG}.npz")            # the query split depends on the seed
     bigger = sorted((int(re.search(r"gt_k(\d+)\.npz$", f).group(1)), f)
                     for f in glob.glob(os.path.join(cache, "gt_k*.npz")) if re.search(r"gt_k(\d+)\.npz$", f))
-    bigger = [f for kk, f in bigger if kk > K]
+    bigger = [f for kk, f in bigger if kk > K] if not SEED_TAG else []   # untagged files hold seed 42's queries
     if os.path.exists(gt_path):
         g = np.load(gt_path)
         test_gt, r_gt, p_gt = g["test"], g["r"], g["p"]
@@ -804,7 +813,7 @@ def main():
 
     # 3. cluster bins for every K (centroids fit on the KS pool, distances streamed)
     t0 = time.time()
-    bins_path = os.path.join(cache, f"cluster_bins_{'_'.join(map(str, K_SWEEP))}.pkl")
+    bins_path = os.path.join(cache, f"cluster_bins_{'_'.join(map(str, K_SWEEP))}{SEED_TAG}.pkl")
     if os.path.exists(bins_path):
         with open(bins_path, "rb") as f:
             centroids, bins = pickle.load(f)

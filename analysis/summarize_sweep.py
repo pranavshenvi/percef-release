@@ -23,8 +23,8 @@ PAT = re.compile(r"results_unified_(.+?)(?:_sweep(?:_t([0-9.]+))?(?:_k(\d+))?(_f
 runs, sweep_ds = {}, set()
 for d in sorted(glob.glob(os.path.join(root, "results_unified_*"))):
     b = os.path.basename(d)
-    if "smoke" in b or "ablation" in b or not os.path.exists(os.path.join(d, "meta.json")):
-        continue
+    if "smoke" in b or "ablation" in b or re.search(r"_sweep_s\d", b) or not os.path.exists(os.path.join(d, "meta.json")):
+        continue                                   # seed repeats: analysis/summarize_seeds.py
     m = PAT.match(b)
     if not m:
         continue
